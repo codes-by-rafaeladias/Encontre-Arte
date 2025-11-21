@@ -1,0 +1,320 @@
+
+:root {
+    /* Cores principais */
+    --color-background: #EAE4F2;
+    --color-primary: #8E6BBF;       
+    --color-secondary: #EA853C;     
+    --color-text: #2C2C2C;          
+    --color-text-on-primary: #FFFFFF; 
+    --color-text-error: #E15A5A;
+    --color-text-sucess: #6FCF97; 
+    --color-border-error: #d64545;
+
+    /* Cores de hover */
+    --color-primary-hover: #7a55b2;   
+    --color-secondary-hover: #d9752e; 
+    --color-link-hover: #8E6BBF;      
+
+    --font-main: 'Montserrat', sans-serif;
+
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-md: 16px;
+    --font-size-lg: 20px;
+    --font-size-xl: 24px;
+    --font-size-2xl: 32px;
+    --font-size-3xl: 40px;
+
+    --border-radius: 8px;
+}
+
+h1 {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+}
+
+h2 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+p, span {
+    font-size: var(--font-size-md);
+}
+
+body.app-body { 
+  font-family: var(--font-main);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+body.auth-body { 
+  font-family: var(--font-main);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.footer {
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+  height: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: var(--font-main);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.btn {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-main);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  color: var(--color-text-on-primary);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  text-align: center;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-secondary-hover);
+}
+
+.btn-largo {
+  width: 300px;
+  height: 40px;
+}
+
+.btn-medio {
+  width: 150px;
+  height: 40px;
+}
+
+.btn-pequeno {
+  width: 80px;
+  height: 40px;
+}
+
+.input-label {
+  width: 100%;
+  text-align: left;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.input-text {
+  width: 300px;
+  height: 40px;
+  background-color: var(--color-text-on-primary);
+  border: 1px solid var(--color-text);
+  border-radius: var(--border-radius);
+  padding: 0 12px;
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input-text::placeholder {
+  color: var(--color-text);
+  font-size: var(--font-size-xs);
+}
+
+.input-text:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(142, 107, 191, 0.2);
+}
+
+.input-group {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.required {
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-link-hover);
+    text-decoration: underline;
+}
+
+.error-message{
+  color: var(--color-text-error);
+  font-size: var( --font-size-sm);
+  font-weight: 500;
+  text-align: left;
+}
+
+.input-error {
+  border-color: var(--color-border-error) !important;
+}
+
+.sucess-message{
+  color: var(--color-text-sucess);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.form-error-box {
+    width: 300px;
+    margin-top: 0.6rem;
+}
+
+.form-error-box ul {
+    margin: 0;
+}
+
+.form-error-box li {
+    width: 100%;
+    text-align: left;
+    color:  var(--color-text-error);
+    font-size: var(--font-size-sm);
+}
+
+.image-hover-container {
+    margin-bottom: 10px;
+    position: relative; 
+    width: 36px; 
+    height: 36px; 
+    overflow: hidden; 
+}
+
+.image-hover-container img {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: opacity 0.3s ease-in-out; 
+}
+
+.image-hover-container .hover-image {
+    opacity: 0; 
+}
+
+.card-botao:hover .normal-image {
+    opacity: 0; 
+}
+
+.card-botao:hover .hover-image {
+    opacity: 1; 
+}
+
+.dashboard-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+.swal-title {
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    margin-bottom: 10px !important;
+    color: #2c2c2c !important;
+    font-family: 'Poppins', sans-serif;
+}
+
+.swal-html {
+    text-align: center !important;
+    font-size: var(--font-size-sm) !important;
+    line-height: 1.5 !important;
+    color: var(--color-text) !important;
+    margin-top: 5px !important;
+    font-family: var(--font-main);
+}
+
+.swal-confirm {
+    font-size: 15px !important;
+    padding: 10px 24px !important;
+    border-radius: 12px !important;
+    background-color: #8E6BBF !important;
+    font-family: 'Poppins', sans-serif;
+}
+
+.swal-confirm-delete {
+    font-size: 15px !important;
+    padding: 10px 24px !important;
+    border-radius: 12px !important;
+    background-color: #EA853C !important;
+    font-family: 'Poppins', sans-serif;
+}
+
+.swal-cancel {
+    font-size: 15px !important;
+    padding: 10px 24px !important;
+    border-radius: 12px !important;
+    background-color: #8E6BBF !important;
+    color: white !important;
+    font-family: 'Poppins', sans-serif;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../../public/fonts/Montserrat-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../../public/fonts/Montserrat-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../../public/fonts/Montserrat-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}

@@ -1,0 +1,114 @@
+main {
+  display: flex;
+  justify-content: center;     
+  align-items: flex-start;      
+  min-height: 100vh;            
+  padding: 3rem 1rem;          
+  background-color: var(--color-background);
+  box-sizing: border-box;      
+  overflow-y: auto;         
+}
+
+.register-box {
+  background-color: #FFFFFF;
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);              
+  max-width: 420px; 
+  height: auto;        
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;            
+}
+
+.register-title {
+  color: var(--color-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 1.5rem;  
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   
+  gap: 1.2rem;            
+  width: 100%;
+}
+
+a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-secondary-hover);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.spacing-link{
+    margin-top:1.2rem;
+}
+
+p{
+  margin-top:0;
+}
+
+.user-type-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 300px;
+  align-items: center;
+}
+
+.user-type-option {
+  display: inline-block;
+  width: 48%;
+  cursor: pointer;
+}
+
+.user-type-option input[type="radio"] {
+  display: none; 
+}
+
+.user-type-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: flex-start;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: var(--border-radius);
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+  color: var(--color-text);
+  font-size: var(--font-size-md);
+}
+
+.user-type-card i {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+
+.user-type-card:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(142, 107, 191, 0.05);
+}
+
+.user-type-option input[type="radio"]:checked + .user-type-card {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+}
+
+.user-type-option input[type="radio"]:checked + .user-type-card i {
+  color: var(--color-text-on-primary);
+}
