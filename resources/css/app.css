@@ -256,47 +256,20 @@ a:hover {
   margin: 0 auto;
 }
 
-.swal-title {
-    font-size: 22px !important;
-    font-weight: 600 !important;
-    margin-bottom: 10px !important;
-    color: #2c2c2c !important;
-    font-family: 'Poppins', sans-serif;
+.no-items {
+    text-align: center;
+    padding: 2rem;
 }
 
-.swal-html {
-    text-align: center !important;
-    font-size: var(--font-size-sm) !important;
-    line-height: 1.5 !important;
-    color: var(--color-text) !important;
-    margin-top: 5px !important;
-    font-family: var(--font-main);
+.page-title {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-text);
 }
 
-.swal-confirm {
-    font-size: 15px !important;
-    padding: 10px 24px !important;
-    border-radius: 12px !important;
-    background-color: #8E6BBF !important;
-    font-family: 'Poppins', sans-serif;
-}
-
-.swal-confirm-delete {
-    font-size: 15px !important;
-    padding: 10px 24px !important;
-    border-radius: 12px !important;
-    background-color: #EA853C !important;
-    font-family: 'Poppins', sans-serif;
-}
-
-.swal-cancel {
-    font-size: 15px !important;
-    padding: 10px 24px !important;
-    border-radius: 12px !important;
-    background-color: #8E6BBF !important;
-    color: white !important;
-    font-family: 'Poppins', sans-serif;
-}
 
 @font-face {
   font-family: 'Montserrat';
