@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class EnsureUserIsCostumer
+class EnsureUserIsCustomer
 {
     public function handle(Request $request, Closure $next)
     {
@@ -14,7 +14,7 @@ class EnsureUserIsCostumer
                 ->withErrors(['Você precisa estar logado.']);
         }
 
-        if (auth()->user()->type !== 'costumer') {
+        if (auth()->user()->type !== 'customer') {
             return abort(403, 'Acesso negado: somente clientes podem acessar esta área.');
         }
 
