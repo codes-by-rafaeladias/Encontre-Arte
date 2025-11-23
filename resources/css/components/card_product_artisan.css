@@ -1,5 +1,6 @@
 .card {
-  width: 300px;
+  width: 200px;
+  height: 200px;
   background-color: var(--color-text-on-primary);
   border: 1px solid #ddd;
   border-radius: var(--border-radius);
@@ -21,28 +22,26 @@
 
 .card-img {
   width: 200px;
-  height: 200px;
+  height: 100px;
   object-fit: cover;
   border-radius: var(--border-radius);
 }
 
 .card-title {
-  font-size: 1rem;
+  font-size: var(--font-size-sm);
   font-weight: 600;
   color: var(--color-text);
-  margin: 0.5rem 0 0 0;
 }
 
 .card-price {
-  font-size: 0.95rem;
-  color: var(--roxo);
   font-weight: 600;
   margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
 }
 
 .card-buttons {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  gap: 1rem;
 }

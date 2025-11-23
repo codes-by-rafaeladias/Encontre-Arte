@@ -5,13 +5,15 @@
          alt="{{ $product->name }}" 
          class="card-img">
 
-    <h3 class="card-title">{{ $product->name }}</h3>
+    <span class="card-title">{{ $product->name }}</span>
     <p class="card-price">R$ {{ number_format($product->price, 2, ',', '.') }}</p>
 
     <div class="card-buttons">
-      <a href="{{ route('produtos.editar', $product->id) }}" class="btn btn-primary btn-pequeno">
-        Editar
-      </a>
+      <form action="{{ route('produto.edicao', $product->id) }}" method="GET">
+          <button type="submit" class="btn btn-primary btn-pequeno">
+            Editar
+          </button>
+      </form>
       <form action="{{ route('produtos.excluir', $product->id) }}" 
             method="POST" 
             onsubmit="return confirm('Tem certeza que deseja excluir este produto?')" 
