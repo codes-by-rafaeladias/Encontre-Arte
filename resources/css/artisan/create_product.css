@@ -1,23 +1,18 @@
 .image-upload-wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
-}
-
-.image-upload-box {
-    width: 300px;
+    width: 200px;
     height: 150px;
     background: var(--color-background);
     border: 2px dashed var(--color-primary);
     border-radius: 15px;
-    cursor: pointer;
     position: relative;
     overflow: hidden;
     transition: 0.3s;
     align-items: center;
 }
 
-.image-upload-box:hover {
+.image-upload-wrapper {
     border-color: var(--color-primary-hover);
 }
 

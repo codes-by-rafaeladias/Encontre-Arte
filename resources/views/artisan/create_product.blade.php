@@ -7,19 +7,22 @@
 @section('content')
 <h2 class="page-title">Cadastro de Produto</h2>
 <div class="main-container">
-    <form method="POST" action="#" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('produtos.salvar') }}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <div class="image-upload-wrapper">
-            <label for="product_image" class="image-upload-box">
                 <img id="image_preview" class="preview-image" style="display: none;">
                 <div class="upload-text">
                     <i class="fa-solid fa-cloud-arrow-up"></i>
-                    <p>Clique para enviar imagem</p>
                 </div>
-            </label>
-            <input type="file" id="product_image" name="product_image" hidden onchange="previewImage(event)">
         </div>
+        <button 
+            type="button"
+            onclick="document.getElementById('image_url').click()"
+            class="btn btn-primary btn-medio">
+            Enviar Imagem
+        </button>
+        <input type="file" id="image_url" name="image_url" class="d-none">
         <div class="input-group">
             <label for="name" class="input-label">
                 Nome <span class="required">*</span>
@@ -70,16 +73,17 @@
 @endsection
 @push('scripts')
 <script>
-function previewImage(event) {
-    const preview = document.querySelector("#image_preview");
-    const textBox = document.querySelector(".upload-text");
-
-    preview.src = URL.createObjectURL(event.target.files[0]);
-    preview.style.display = "block";
-
-    textBox.style.display = "none";
-
-}
+document.getElementById('image_url').onchange = function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        const previewImage =  document.querySelector('#image_preview');
+        const container = document.querySelector('.upload-text');
+        
+        previewImage.src = URL.createObjectURL(file);
+        previewImage.style.display = 'block';
+        container.style.display = 'none';
+    }
+};
 
 function formatPrice(input) {
     let value = input.value.replace(/\D/g, ""); 
