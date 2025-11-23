@@ -31,7 +31,7 @@
                 type="text" 
                 id="name" 
                 name="name"
-                class="input-text @error('name') input-error @enderror"
+                class="input-text @error('price') input-error @enderror"
                 required
             >
         </div>
@@ -50,7 +50,7 @@
                 id="price" 
                 name="price"
                 placeholder="0,00"
-                class="input-text"
+                class="input-text @error('name') input-error @enderror"
                 oninput="formatPrice(this)"
             >
         </div>
@@ -68,6 +68,15 @@
             <button type="submit" class="btn btn-primary btn-largo">
                 Cadastrar
             </button>
+             @if ($errors->any())
+            <div class="form-error-box">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+    @endif
     </form>
 </div>
 @endsection
@@ -93,5 +102,19 @@ function formatPrice(input) {
 
     input.value = value;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const inputs = document.querySelectorAll(".input-text");
+
+    inputs.forEach(input => {
+        input.addEventListener("input", () => {
+
+            input.classList.remove("input-error");
+
+            const errorBox = document.querySelector(".form-error-box");
+            if (errorBox) errorBox.style.display = "none";
+        });
+    });
+});
 </script>
 @endpush

@@ -62,6 +62,15 @@
             <button type="submit" class="btn btn-primary btn-largo">
                 Salvar Alterações
             </button>
+                @if ($errors->any())
+            <div class="form-error-box">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+    @endif
     </form>
 </div>
 @endsection
@@ -81,5 +90,19 @@ document.getElementById('profile_image').onchange = function(e) {
         
     }
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+    const inputs = document.querySelectorAll(".input-text");
+
+    inputs.forEach(input => {
+        input.addEventListener("input", () => {
+
+            input.classList.remove("input-error");
+
+            const errorBox = document.querySelector(".form-error-box");
+            if (errorBox) errorBox.style.display = "none";
+        });
+    });
+});
 </script>
 @endpush
