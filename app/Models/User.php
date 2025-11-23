@@ -39,4 +39,9 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new \App\Notifications\CustomResetPassword($token));
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'artisan_id');
+    }
+
 }

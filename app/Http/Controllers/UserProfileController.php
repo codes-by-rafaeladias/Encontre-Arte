@@ -54,6 +54,9 @@ class UserProfileController extends Controller
             'business_name'  => 'nullable|string|max:255',
             'bio'            => 'nullable|string',
             'profile_image'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+        ],
+        [
+            'name.required' => 'O campo nome é obrigatório.',
         ]);
 
         $user->name = $request->name;
