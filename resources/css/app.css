@@ -273,6 +273,39 @@ a:hover {
     color: var(--color-text);
 }
 
+.swal-title {
+    font-size: var(--font-size-xl) !important;
+    font-weight: 600 !important;
+    margin-bottom: 10px !important;
+    color: var(--color-text) !important;
+    font-family: var(--font-main);
+}
+
+.swal-html {
+    text-align: center !important;
+    font-size: var(--font-size-sm) !important;
+    line-height: 1.5 !important;
+    color: var(--color-text) !important;
+    font-family: var(--font-main);
+}
+
+.swal-confirm-delete {
+    font-size: var(--font-size-md) !important;
+    padding: 10px 24px !important;
+    border-radius: 8px !important;
+    background-color: var(--color-secondary) !important;
+    color: var(--color-text-on-primary) !important;
+    font-family: var(--font-main);
+}
+
+.swal-cancel {
+    font-size: var(--font-size-md) !important;
+    padding: 10px 24px !important;
+    border-radius: 8px !important;
+    background-color: var(--color-primary) !important;
+    color: var(--color-text-on-primary) !important;
+    font-family: var(--font-main);
+}
 
 @font-face {
   font-family: 'Montserrat';

@@ -42,36 +42,32 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function showDeleteConfirm(htmlMessage, callback) {
-        Swal.fire({
-            title: "Confirmar exclusão?",
-            html: htmlMessage,  
-            icon: null,         
-            showCancelButton: true,
-
-            background: "#FFFFFF",
-            color: "#2c2c2c",
-            width: "450px",
-            padding: "30px 25px",
-            borderRadius: "20px",
-
-            customClass: {
-                title: 'swal-title',
-                htmlContainer: 'swal-html',
-                confirmButton: 'swal-confirm-delete',
-                cancelButton: 'swal-cancel',
-            },
-
-            confirmButtonText: "Excluir",
-            cancelButtonText: "Cancelar",
-
-            confirmButtonColor: "#EA853C",
-            cancelButtonColor: "#8E6BBF",
-        }).then((result) => {
-            if (result.isConfirmed && callback) callback();
-        });
-    }
-
+    window.showDeleteConfirm = function(htmlMessage, callback) {
+    Swal.fire({
+        title: "Confirmar exclusão?",
+        html: htmlMessage,
+        showCancelButton: true,
+        reverseButtons: true,
+        background: "#FFFFFF",
+        color: "#2c2c2c",
+        width: "400px",
+        height: "100px",
+        padding: "10px",
+        borderRadius: "20px",
+        customClass: {
+            title: 'swal-title',
+            htmlContainer: 'swal-html',
+            cancelButton: 'swal-cancel',
+            confirmButton: 'swal-confirm-delete',
+        },
+        confirmButtonText: "Excluir",
+        cancelButtonText: "Cancelar",
+        confirmButtonColor: "#EA853C",
+        cancelButtonColor: "#8E6BBF",
+    }).then((result) => {
+        if (result.isConfirmed && callback) callback();
+    });
+};
 
     // ACIONA OS ALERTAS DA SESSÃO
     if (success) showToast(`${success}`);

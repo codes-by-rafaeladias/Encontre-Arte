@@ -16,13 +16,35 @@
       </form>
       <form action="{{ route('produtos.excluir', $product->id) }}" 
             method="POST" 
-            onsubmit="return confirm('Tem certeza que deseja excluir este produto?')" 
             style="display:inline">
           @csrf
           @method('DELETE')
-          <button type="submit" class="btn btn-secondary btn-pequeno">
+          <button type="button" class="btn-delete btn btn-secondary btn-pequeno" data-product-name="{{ $product->name }}">
             Excluir
           </button>
       </form>
     </div>
 </div>
+@push('scripts')
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const deleteButtons = document.querySelectorAll(".btn-delete");
+
+    deleteButtons.forEach(button => {
+        button.addEventListener("click", function () {
+
+            const form = this.closest("form");
+            const itemName = this.dataset.productName ?? "este produto";
+
+            showDeleteConfirm(
+                `<p>Tem certeza que deseja excluir <strong>${itemName}</strong>?</p>`,
+                () => form.submit()
+            );
+
+        });
+    });
+
+});
+</script>
+@endpush
