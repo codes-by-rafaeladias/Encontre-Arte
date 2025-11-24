@@ -1,0 +1,60 @@
+.artisan-card {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem;
+    background: var(--color-text-on-primary);
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    width: 600px;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: 0.2s ease;
+}
+
+.artisan-card:hover {
+    border-color: var(--color-primary);
+}
+
+.artisan-card-left img.artisan-avatar {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.avatar-str {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: var(--color-primary); 
+    color: var(--color-text-on-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: var(--font-size-2xl);
+    text-transform: uppercase;
+}
+
+.artisan-card-center {
+    flex: 1;
+}
+
+.artisan-name {
+    margin: 0;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.artisan-business {
+    margin: 2px 0 6px;
+    font-size: 0.95rem;
+    color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    .artisan-card {
+        width: 80%;
+    }
+}

@@ -14,34 +14,3 @@
     margin-top: 20px;
     margin-bottom: 8px;
 }
-
-.pagination-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-}
-
-.pagination {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.pagination .page-link {
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background: var(--color-text-on-primary);
-    color: var(--color-text);
-    text-decoration: none;
-    transition: 0.2s;
-}
-
-.pagination .page-link:hover {
-    background: #f0f0f0;
-}
-
-.pagination .active .page-link {
-    background: var(--color-primary);
-    color: var(--color-text-on-primary);
-    border-color: var(--color-primary);
-}
