@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ArtisanProductController;
+use App\Http\Controllers\CustomerProductController;
 
 //auth
 
@@ -55,5 +56,7 @@ Route::middleware(['auth', 'customer'])->group(function () {
     Route::get('/painel/cliente', function () {
     return view('home.customer');
     })->name('painel.cliente');
+    Route::get('/produtos', [CustomerProductController::class, 'listAllProducts'])
+     ->name('cliente.produtos');
 });
 
