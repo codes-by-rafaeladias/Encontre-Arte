@@ -38,6 +38,12 @@ class Product extends Model
         return $this->belongsTo(User::class, 'artisan_id');
     }
 
+    public function favoritedBy()
+    {
+    return $this->belongsToMany(User::class, 'favorites');
+}
+
+
     /**
      * Gera slug automaticamente ao criar
      */
