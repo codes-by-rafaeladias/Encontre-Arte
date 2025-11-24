@@ -11,7 +11,12 @@ class CustomerProductController extends Controller
     public function listAllProducts()
     {
         $products = Product::latest()->get();
+
+         $favoriteIds = auth()->user()
+        ->favoriteProducts()
+        ->pluck('product_id')
+        ->toArray();
         
-        return view('customer.products', compact('products'));
+        return view('customer.products', compact('products', 'favoriteIds'));
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ArtisanProductController;
 use App\Http\Controllers\CustomerProductController;
+use App\Http\Controllers\FavoriteController;
 
 //auth
 
@@ -58,5 +59,8 @@ Route::middleware(['auth', 'customer'])->group(function () {
     })->name('painel.cliente');
     Route::get('/produtos', [CustomerProductController::class, 'listAllProducts'])
      ->name('cliente.produtos');
+     Route::post('/produto/favoritar/{id}', [FavoriteController::class, 'toggle'])
+    ->name('produto.favoritar');
+
 });
 

@@ -21,7 +21,7 @@
 
     <div class="dashboard-grid">
         @foreach ($products as $product)
-            <x-card_product_client :product="$product"/>
+            <x-card_product_client :product="$product" :favorited="in_array($product->id, $favoriteIds)"/>
         @endforeach
     </div>
 
