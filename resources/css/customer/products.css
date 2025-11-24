@@ -1,0 +1,18 @@
+.title{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.search-form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+

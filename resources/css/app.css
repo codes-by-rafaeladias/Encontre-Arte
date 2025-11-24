@@ -290,6 +290,7 @@ a:hover {
 }
 
 .swal-confirm-delete {
+    width: 120px !important;
     font-size: var(--font-size-md) !important;
     padding: 10px 24px !important;
     border-radius: 8px !important;
@@ -299,6 +300,7 @@ a:hover {
 }
 
 .swal-cancel {
+    width: 120px !important;
     font-size: var(--font-size-md) !important;
     padding: 10px 24px !important;
     border-radius: 8px !important;

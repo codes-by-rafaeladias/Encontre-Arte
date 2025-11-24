@@ -44,18 +44,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.showDeleteConfirm = function(htmlMessage, callback) {
     Swal.fire({
-        title: "Confirmar exclusão?",
+        title: null,
         html: htmlMessage,
         showCancelButton: true,
         reverseButtons: true,
         background: "#FFFFFF",
         color: "#2c2c2c",
         width: "400px",
-        height: "100px",
         padding: "10px",
         borderRadius: "20px",
         customClass: {
-            title: 'swal-title',
             htmlContainer: 'swal-html',
             cancelButton: 'swal-cancel',
             confirmButton: 'swal-confirm-delete',
