@@ -27,4 +27,14 @@ class FavoriteController extends Controller
 
         return back()->with('success', 'Produto adicionado aos favoritos');
     }
+
+    public function listFavorites()
+    {
+
+        $user = auth()->user();
+        $favoriteProducts = $user->favoriteProducts()
+        ->get();
+
+        return view('customer.favorites', compact('favoriteProducts'));
+    }
 }

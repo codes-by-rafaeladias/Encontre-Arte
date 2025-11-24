@@ -61,6 +61,7 @@ Route::middleware(['auth', 'customer'])->group(function () {
      ->name('cliente.produtos');
      Route::post('/produto/favoritar/{id}', [FavoriteController::class, 'toggle'])
     ->name('produto.favoritar');
-
+    Route::get('/favoritos', [FavoriteController::class, 'listFavorites'])
+    ->name('favoritos.lista');
 });
 
