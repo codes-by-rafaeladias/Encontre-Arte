@@ -6,18 +6,25 @@
 @section('title', 'Produtos')
 @section('content')
 <h2 class="title">Produtos</h2>
-    <form action="#" method="GET" class="search-form">
+    <form action="{{ route('cliente.produtos') }}" method="GET" class="search-form">
         <x-search_bar 
             name="search" 
             placeholder="Buscar produtos..."
+            :value="$search"
         />
     </form>
 
-    @if($products->isEmpty())
+    @if($products->isEmpty() && !$search)
         <div class="no-items">
             <p>No momento, nenhum produto está disponível.</p>
         </div>
     @else
+
+    @if ($products->isEmpty())
+    <div class="no-items">
+        <p>Nenhum produto encontrado para: <strong>{{ $search }}</strong></p>
+    </div>
+    @endif
 
     <div class="dashboard-grid">
         @foreach ($products as $product)
@@ -25,6 +32,9 @@
         @endforeach
     </div>
 
-    @endif
+    <div class="pagination-wrapper">
+        {{ $products->withQueryString()->links() }}
+    </div>
 
+    @endif
 @endsection

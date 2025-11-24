@@ -1,4 +1,4 @@
-@props(['placeholder', 'name'])
+@props(['placeholder', 'name', 'value'])
 @vite(['resources/css/app.css', 'resources/css/components/search_bar.css'])
 <div class="search-input-wrapper">
     <i class="fa-solid fa-magnifying-glass search-input-icon"></i> 
@@ -8,5 +8,6 @@
         class="search-input-field"
         placeholder="{{ $placeholder }}"
         autocomplete="off"
+        value="{{ $value ?? '' }}"
     >
 </div>
