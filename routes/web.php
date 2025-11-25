@@ -69,5 +69,7 @@ Route::middleware(['auth', 'customer'])->group(function () {
     ->name('cliente.artesaos');
     Route::get('/artesao/{id}', [ArtisanPublicController::class, 'show'])
     ->name('artesao.perfil');
+    Route::get('/produto/{slug}', [CustomerProductController::class, 'showProduct'])
+    ->name('produto.info');
 });
 

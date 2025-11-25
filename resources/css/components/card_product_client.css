@@ -63,3 +63,7 @@
 .favorite-button i.favorited {
     color: var(--color-secondary);
 }
+
+.card-link:hover{
+    text-decoration: none;
+}

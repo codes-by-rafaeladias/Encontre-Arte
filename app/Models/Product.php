@@ -40,10 +40,19 @@ class Product extends Model
 
     public function favoritedBy()
     {
-    return $this->belongsToMany(User::class, 'favorites');
-}
-
-
+        return $this->belongsToMany(User::class, 'favorites');
+    }
+    
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+    
+    public function averageRating()
+    {
+        return $this->reviews()->avg('rating') ?? 0;
+    }
+    
     /**
      * Gera slug automaticamente ao criar
      */

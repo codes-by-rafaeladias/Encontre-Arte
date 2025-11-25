@@ -60,11 +60,6 @@
     margin-bottom: .5rem;
 }
 
-.profile-count {
-    font-size: var(--font-size-sm);
-    color: var(--color-text);
-}
-
 .profile-divider {
     border: none;
     border-top: 1px solid #ddd;

@@ -70,8 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // ACIONA OS ALERTAS DA SESSÃO
     if (success) showToast(`${success}`);
 
-    // Exemplo de uso do de exclusão:
-    // showDeleteConfirm(`<p>Tem certeza que deseja excluir <strong>este item</strong>?</p>`, () => console.log("Deletado!"));
 
 });
 </script>
