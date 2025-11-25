@@ -7,6 +7,7 @@ use App\Http\Controllers\ArtisanProductController;
 use App\Http\Controllers\CustomerProductController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\CustomerArtisanController;
+use App\Http\Controllers\ArtisanPublicController;
 
 //auth
 
@@ -66,5 +67,7 @@ Route::middleware(['auth', 'customer'])->group(function () {
     ->name('favoritos.lista');
     Route::get('/artesaos', [CustomerArtisanController::class, 'listArtisans'])
     ->name('cliente.artesaos');
+    Route::get('/artesao/{id}', [ArtisanPublicController::class, 'show'])
+    ->name('artesao.perfil');
 });
 

@@ -1,7 +1,7 @@
 @vite('resources/css/components/card_artisan.css')
 @props(['artisan'])
 
-<a href="{{ route('login', $artisan->id) }}" class="artisan-card">
+<a href="{{ route('artesao.perfil', $artisan->id) }}" class="artisan-card">
 
     <div class="artisan-card-left">
         @if($artisan->profile_image)

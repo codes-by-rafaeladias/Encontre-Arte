@@ -1,0 +1,111 @@
+.profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    border-radius: 20px;
+    background-color: var(--color-text-on-primary);
+}
+
+.profile-header {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.profile-left {
+    flex-shrink: 0;
+}
+
+.profile-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border-color: var(--color-primary);
+}
+
+.avatar-str {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: var(--color-primary); 
+    color: var(--color-text-on-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: var(--font-size-2xl);
+    text-transform: uppercase;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-name {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    margin-bottom: .5rem;
+}
+
+.profile-business {
+    font-size: var(--font-size-md);
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: .5rem;
+}
+
+.profile-bio {
+    font-size: var(--font-size-md);
+    margin-bottom: .5rem;
+}
+
+.profile-count {
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+}
+
+.profile-divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 2rem 0;
+}
+
+.gallery-title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.product-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    text-decoration: none;
+    color: inherit;
+    transition: transform .2s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.03);
+}
+
+.gallery-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.gallery-name {
+    text-align: center;
+    display: block;
+    margin-top: .4rem;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text);
+}
