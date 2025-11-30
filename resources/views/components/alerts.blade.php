@@ -22,26 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function showSuccess(htmlMessage) {
-        Swal.fire({
-            html: htmlMessage,
-            icon: null,
-            showConfirmButton: false,
-            background: "#FFFFFF",
-            color: "#2c2c2c",
-            width: "430px",
-            padding: "5px",
-            borderRadius: "20px",
-
-            customClass: {
-                htmlContainer: 'swal-html',
-                confirmButton: 'swal-confirm',
-            },
-
-            confirmButtonColor: "#8E6BBF",
-        });
-    }
-
     window.showDeleteConfirm = function(htmlMessage, callback) {
     Swal.fire({
         title: null,
@@ -60,8 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         confirmButtonText: "Excluir",
         cancelButtonText: "Cancelar",
-        confirmButtonColor: "#EA853C",
-        cancelButtonColor: "#8E6BBF",
+        confirmButtonColor: "#8E6BBF",
+        cancelButtonColor: "#EA853C",
     }).then((result) => {
         if (result.isConfirmed && callback) callback();
     });

@@ -65,13 +65,21 @@
                     </button>
                 </form>
 
-                <form action="{{ route('login', $product->id) }}" >
-                    @csrf
-                     <button class="btn btn-primary btn-medio">
-                         Avaliar Produto
-                    </button>
-                </form>
+                <button type="button" class="btn btn-primary btn-medio" id="openReviewPopup">
+                    {{ $userReview ? 'Editar Avaliação' : 'Avaliar Produto' }}
+                </button>
+
             </div>
+            <form id="reviewRealForm" method="POST" action="{{ $userReview ? route('avaliacao.atualizar', $userReview->id) : route('avaliacao.cadastrar', $product->id) }}">
+    @csrf
+    @if($userReview)
+        @method('PUT')
+    @endif
+
+    <input type="hidden" name="rating" id="ratingField">
+    <input type="hidden" name="comment" id="commentField">
+</form>
+
         </div>
 
     </div>
@@ -79,3 +87,102 @@
 </div>
 
 @endsection
+@push('scripts')
+@push('scripts')
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    const button = document.getElementById("openReviewPopup");
+
+    button.addEventListener("click", function() {
+
+        const previousRating = {{ $userReview->rating ?? 0 }};
+        const previousComment = @json($userReview->comment ?? '');
+
+        Swal.fire({
+            title: "{{ $userReview ? 'Editar Avaliação' : 'Avaliar Produto' }}",
+            html: `
+                <div class="popup-rating-box" style="margin-bottom: 10px;">
+                    ${renderStars(previousRating)}
+                </div>
+
+                <div style="display:flex; justify-content:center; width:100%;">
+                    <textarea id="popupComment" class="swal2-textarea textarea-centered" 
+                    placeholder="Escreva seu comentário...">${previousComment}</textarea>
+                </div>
+            `,
+            showCancelButton: true,
+            reverseButtons: true,
+            confirmButtonText: '{{ $userReview ? "Salvar" : "Enviar" }}',
+            cancelButtonText: 'Cancelar',
+            background: "#FFFFFF",
+            width: "480px",
+            customClass: {
+                confirmButton: 'swal-confirm-delete',
+                cancelButton: 'swal-cancel',
+                htmlContainer: 'swal-html',
+                title: 'swal-title',
+            },
+
+            didOpen: () => {
+                setupStarClickEvents();
+            },
+            
+            preConfirm: () => {
+                const rating = document.getElementById("ratingField").value;
+                
+                if (!rating || rating < 1 || rating > 5) {
+                    Swal.showValidationMessage("Você precisa selecionar uma quantidade de estrelas.");
+                    return false;
+                }
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                submitReviewForm();
+            }
+        });
+
+    });
+
+    function renderStars(active) {
+        let html = "";
+        for (let i = 1; i <= 5; i++) {
+            html += `
+                <i class="fa-star ${i <= active ? 'fa-solid star-active' : 'fa-regular'} star-popup" 
+                   data-value="${i}" 
+                   style="font-size: 28px; cursor:pointer; margin: 0 4px; color:#FFD43B;"></i>`;
+        }
+        return html;
+    }
+
+    function setupStarClickEvents() {
+        const stars = document.querySelectorAll(".star-popup");
+        stars.forEach(star => {
+            star.addEventListener("click", function(){
+                const value = this.dataset.value;
+
+                stars.forEach(s => {
+                    s.classList.remove("fa-solid");
+                    s.classList.add("fa-regular");
+                });
+
+                for (let i = 0; i < value; i++) {
+                    stars[i].classList.remove("fa-regular");
+                    stars[i].classList.add("fa-solid");
+                }
+
+                document.getElementById("ratingField").value = value;
+            });
+        });
+    }
+
+    function submitReviewForm() {
+        const comment = document.getElementById("popupComment").value;
+        document.getElementById("commentField").value = comment;
+
+        document.getElementById("reviewRealForm").submit();
+    }
+
+});
+</script>
+@endpush

@@ -8,6 +8,7 @@ use App\Http\Controllers\CustomerProductController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\CustomerArtisanController;
 use App\Http\Controllers\ArtisanPublicController;
+use App\Http\Controllers\ProductReviewController;
 
 //auth
 
@@ -71,5 +72,9 @@ Route::middleware(['auth', 'customer'])->group(function () {
     ->name('artesao.perfil');
     Route::get('/produto/{slug}', [CustomerProductController::class, 'showProduct'])
     ->name('produto.info');
+    Route::post('/produto/{slug}', [ProductReviewController::class, 'store'])
+    ->name('avaliacao.cadastrar');
+    Route::put('/produto/{slug}', [ProductReviewController::class, 'update'])
+        ->name('avaliacao.atualizar');
 });
 

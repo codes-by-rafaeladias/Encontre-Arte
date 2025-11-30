@@ -294,7 +294,7 @@ a:hover {
     font-size: var(--font-size-md) !important;
     padding: 10px 24px !important;
     border-radius: 8px !important;
-    background-color: var(--color-secondary) !important;
+    background-color: var(--color-primary) !important;
     color: var(--color-text-on-primary) !important;
     font-family: var(--font-main);
 }
@@ -304,7 +304,7 @@ a:hover {
     font-size: var(--font-size-md) !important;
     padding: 10px 24px !important;
     border-radius: 8px !important;
-    background-color: var(--color-primary) !important;
+    background-color: var(--color-secondary) !important;
     color: var(--color-text-on-primary) !important;
     font-family: var(--font-main);
 }
