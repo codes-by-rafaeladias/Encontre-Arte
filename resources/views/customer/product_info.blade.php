@@ -34,7 +34,7 @@
             </a>
 
             @php
-                $average = $product->average_rating ?? 0;
+                $average = $product->averageRating();
                 $full = floor($average);
                 $half = ($average - $full) >= 0.5;
                 $empty = 5 - $full - ($half ? 1 : 0);
@@ -87,7 +87,6 @@
 </div>
 
 @endsection
-@push('scripts')
 @push('scripts')
 <script>
 document.addEventListener("DOMContentLoaded", function(){

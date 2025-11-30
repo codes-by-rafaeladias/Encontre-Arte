@@ -1,0 +1,42 @@
+.title{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.star-active {
+    color: #FFD43B !important;
+}
+
+.swal2-textarea {
+    width: 90%;
+    font-weight: 500;
+    font-family: inherit; 
+    font-size: var(--font-size-sm);
+    min-height: 90px;
+    border: 1px solid var(--color-text);
+    border-radius: var(--border-radius);
+    padding: 12px;
+    outline: none;
+    box-sizing: border-box;
+    color: var(--color-text);
+}
+
+.swal2-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(142, 107, 191, 0.2);
+}
+
+.review-list {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 2rem;
+}

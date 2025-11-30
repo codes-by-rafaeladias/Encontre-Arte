@@ -11,7 +11,7 @@
         </div>
     <span class="card-botao__text">Artesãos</span>
     </a>
-    <x-card_button icone="fa-solid fa-star" titulo="Avaliações" rota="cadastro"/>
+    <x-card_button icone="fa-solid fa-star" titulo="Avaliações" rota="cliente.avaliacoes"/>
     <x-card_button icone="fa-solid fa-heart" titulo="Favoritos" rota="favoritos.lista"/>
 </div>
 @endsection

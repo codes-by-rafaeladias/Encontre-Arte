@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
         color: "#2c2c2c",
         width: "400px",
         padding: "10px",
-        borderRadius: "20px",
         customClass: {
             htmlContainer: 'swal-html',
             cancelButton: 'swal-cancel',

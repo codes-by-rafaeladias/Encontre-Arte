@@ -1,30 +1,21 @@
-:root {
-  --roxo: #8E6BBF;
-  --laranja: #EA853C;
-  --branco: #FFFFFF;
-  --preto: #2C2C2C;
-  --borda-radius: 8px;
-  --fonte-principal: 'Montserrat', sans-serif;
-}
-
 .avaliacao-card {
   display: flex;
   align-items: flex-start;
   gap: 1.5rem;
-  background-color: var(--branco);
-  border-radius: var(--borda-radius);
+  background-color: var(--color-text-on-primary);
+  border-radius: var(--border-radius);
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   width: 100%;
   max-width: 800px; 
-  font-family: var(--fonte-principal);
+  font-family: var(--font-main);
 }
 
 .avaliacao-imagem img {
   width: 200px;
   height: auto;
-  border-radius: var(--borda-radius);
+  border-radius: var(--border-radius);
   object-fit: cover;
 }
 
@@ -38,7 +29,7 @@
 .avaliacao-produto {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--roxo);
+  color: var(--color-primary);
   margin: 0;
 }
 
@@ -52,13 +43,13 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  color: var(--laranja);
+  color: var(--color-secondary);
   font-size: 18px;
 }
 
 .avaliacao-texto {
   font-size: 1rem;
-  color: var(--preto);
+  color: var(--color-text);
   line-height: 1.5;
   margin-top: 0.5rem;
 }
@@ -88,13 +79,13 @@
 }
 
 .avaliacao-estrelas .fa-solid {
-  color: #FFD700; 
+  color: var(--color-secondary); 
 }
 
 .avaliacao-estrelas .fa-regular {
-  color: #D1D1D1; 
+  color: var(--color-secondary); 
 }
 
 .avaliacao-estrelas .fa-star-half-stroke {
-  color: #FFD700;
+  color: var(--color-secondary);
 }

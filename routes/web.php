@@ -9,6 +9,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\CustomerArtisanController;
 use App\Http\Controllers\ArtisanPublicController;
 use App\Http\Controllers\ProductReviewController;
+use App\Http\Controllers\CustomerReviewController;
 
 //auth
 
@@ -76,5 +77,8 @@ Route::middleware(['auth', 'customer'])->group(function () {
     ->name('avaliacao.cadastrar');
     Route::put('/produto/{slug}', [ProductReviewController::class, 'update'])
         ->name('avaliacao.atualizar');
+    Route::get('/minhas_avaliacoes', [CustomerReviewController::class, 'showReviews'])
+        ->name('cliente.avaliacoes');
+    Route::delete('/avaliacao/{id}/excluir', [CustomerReviewController::class, 'destroy'])
+        ->name('avaliacao.excluir');
 });
-
