@@ -32,6 +32,16 @@ class CustomerProductController extends Controller
     public function showProduct($slug)
     {
         $product = Product::where('slug', $slug)->firstOrFail();
+
+        $user = auth()->user();
+        
+        $userReview = null;
+        
+        if ($user) {
+            $userReview = $product->reviews()
+            ->where('customer_id', $user->id)
+            ->first();
+        }
         
         $isFavorited = auth()->check()
         ? auth()->user()->favoriteProducts()->where('product_id', $product->id)->exists()
@@ -39,7 +49,7 @@ class CustomerProductController extends Controller
         
         $averageRating = round($product->averageRating(), 1); 
 
-        return view('customer.product_info', compact('product', 'isFavorited', 'averageRating'));
+        return view('customer.product_info', compact('product', 'userReview', 'isFavorited', 'averageRating'));
     }
 
 }
