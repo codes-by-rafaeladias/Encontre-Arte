@@ -1,22 +1,32 @@
 .avaliacao-card {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  padding: 1.2rem;
+  background: var(--color-text-on-primary);
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  max-width: 720px;
   gap: 1.5rem;
-  background-color: var(--color-text-on-primary);
-  border-radius: var(--border-radius);
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  width: 100%;
-  max-width: 800px; 
-  font-family: var(--font-main);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: 0.2s ease;
+}
+
+.avaliacao-card:hover {
+  border-color: var(--color-primary);
+}
+
+.avaliacao-imagem{
+  display: flex;
+  justify-content: center;
 }
 
 .avaliacao-imagem img {
-  width: 200px;
-  height: auto;
+  width: 100%;
+  max-width: 200px;
   border-radius: var(--border-radius);
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .avaliacao-conteudo {
@@ -27,34 +37,39 @@
 }
 
 .avaliacao-produto {
-  font-size: 1.2rem;
+  font-size: var(--font-size-xl);
   font-weight: 600;
   color: var(--color-primary);
-  margin: 0;
+  margin-bottom: 0;
 }
 
 .avaliacao-usuario {
-  font-size: 0.95rem;
-  color: #555;
-  margin: 0;
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .avaliacao-estrelas {
   display: flex;
-  align-items: center;
   gap: 0.25rem;
-  color: var(--color-secondary);
-  font-size: 18px;
+  font-size: var(--font-size-md);
+}
+
+.avaliacao-estrelas .fa-solid,
+.avaliacao-estrelas .fa-star-half-stroke {
+  color: var(--color-secondary); 
 }
 
 .avaliacao-texto {
-  font-size: 1rem;
+  font-size: var(--font-size-md);
   color: var(--color-text);
   line-height: 1.5;
   margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .avaliacao-card {
     flex-direction: column;
     align-items: center;
@@ -69,23 +84,4 @@
   .avaliacao-conteudo {
     align-items: center;
   }
-}
-
-.avaliacao-estrelas {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  font-size: 20px;
-}
-
-.avaliacao-estrelas .fa-solid {
-  color: var(--color-secondary); 
-}
-
-.avaliacao-estrelas .fa-regular {
-  color: var(--color-secondary); 
-}
-
-.avaliacao-estrelas .fa-star-half-stroke {
-  color: var(--color-secondary);
 }

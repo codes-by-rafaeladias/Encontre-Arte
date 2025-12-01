@@ -8,7 +8,7 @@
 
     <div class="avaliacao-conteudo">
         <h3 class="avaliacao-produto">{{ $produto }}</h3>
-        <p class="avaliacao-usuario">por <strong>{{ $usuario }}</strong></p>
+        <p class="avaliacao-usuario">Por <strong>{{ $usuario }}</strong></p>
 
         <div class="avaliacao-estrelas">
             @php

@@ -10,6 +10,7 @@ use App\Http\Controllers\CustomerArtisanController;
 use App\Http\Controllers\ArtisanPublicController;
 use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\CustomerReviewController;
+use App\Http\Controllers\ArtisanReviewController;
 
 //auth
 
@@ -54,6 +55,8 @@ Route::middleware(['auth', 'artisan'])->group(function () {
     Route::put('/produtos/{id}', [ArtisanProductController::class, 'update'])
         ->name('produto.atualizar');
     Route::delete('/produtos/{id}', [ArtisanProductController::class, 'destroy'])->name('produtos.excluir');
+    Route::get('/artesao/avaliacoes', [ArtisanReviewController::class, 'listReviews']
+    )->name('artesao.avaliacoes');
 });
 
 //rotas para clientes
