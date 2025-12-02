@@ -319,34 +319,28 @@ a:hover {
 }
 
 .pagination-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
+  text-align: center;
+  padding-bottom: 20px;
 }
 
 .pagination {
     display: flex;
-    gap: 0.5rem;
+    justify-content: center;   
+    align-items: center;       
+    gap: 10px;                 
+    list-style: none;          
+    padding: 0;           
+    text-align: center;
 }
 
-.pagination .page-link {
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background: var(--color-text-on-primary);
-    color: var(--color-text);
+.pagination li {
+    margin: 0 2px;             
+}
+
+.pagination a, 
+.pagination span {
+    padding: 0;
     text-decoration: none;
-    transition: 0.2s;
-}
-
-.pagination .page-link:hover {
-    background: #f0f0f0;
-}
-
-.pagination .active .page-link {
-    background: var(--color-primary);
-    color: var(--color-text-on-primary);
-    border-color: var(--color-primary);
 }
 
 @font-face {
