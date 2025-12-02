@@ -28,6 +28,10 @@
         @endforeach
     </div>
 
+    <div class="pagination-wrapper">
+        {{ $products->withQueryString()->links() }}
+    </div>
+
     @endif
 
 @endsection

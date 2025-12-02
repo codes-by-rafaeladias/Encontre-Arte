@@ -27,9 +27,9 @@
     @endforeach
 </div>
 
-<div class="pagination">
-    {{ $reviews->links() }}
-</div>
+<div class="pagination-wrapper">
+       {{ $reviews->links() }}
+    </div>
 
 @endif
 

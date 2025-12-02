@@ -4,6 +4,8 @@
     @vite(['resources/css/artisan/user_profile.css'])
 @endpush
 
+@section('title', 'Edição de Perfil de Usuário')
+
 @section('content')
 <h2 class="page-title">Edição de Perfil de Usuário</h2>
 <div class="main-container">

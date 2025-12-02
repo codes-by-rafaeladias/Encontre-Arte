@@ -28,6 +28,10 @@
     @endforeach
 </div>
 
+<div class="pagination-wrapper" style="margin-top:0;">
+        {{ $reviews->withQueryString()->links() }}
+    </div>
+
 @endif
 
 @endsection

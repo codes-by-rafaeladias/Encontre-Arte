@@ -19,7 +19,7 @@ class CustomerProductController extends Controller
             $query->where('name', 'LIKE', '%' . $search . '%');
         }
 
-         $products = $query->latest()->paginate(10);
+         $products = $query->latest()->paginate(9);
 
          $favoriteIds = auth()->user()
         ->favoriteProducts()

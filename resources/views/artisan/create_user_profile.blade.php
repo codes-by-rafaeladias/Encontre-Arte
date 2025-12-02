@@ -4,6 +4,8 @@
     @vite(['resources/css/artisan/user_profile.css'])
 @endpush
 
+@section('title', 'Cadastro | Encontre Arte')
+
 @section('content')
 <div class="main-container">
     <form method="POST" action="{{ route('perfil.salvar') }}" enctype="multipart/form-data">

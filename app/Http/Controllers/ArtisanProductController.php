@@ -13,7 +13,7 @@ class ArtisanProductController extends Controller
     {
         $user = auth()->user();
         
-        $products = $user->products()->latest()->get();
+        $products = $user->products()->latest()->paginate(9);
         
         return view('artisan.products', compact('products'));
     }

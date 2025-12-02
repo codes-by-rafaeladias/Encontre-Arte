@@ -13,7 +13,7 @@ class CustomerReviewController extends Controller
             ->reviews()
             ->with('product')   
             ->latest()
-            ->get();
+            ->paginate(10);
 
         return view('customer.reviews', compact('reviews'));
     }

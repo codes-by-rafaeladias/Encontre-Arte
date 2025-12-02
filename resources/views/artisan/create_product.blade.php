@@ -4,6 +4,8 @@
     @vite(['resources/css/artisan/user_profile.css', 'resources/css/artisan/create_product.css'])
 @endpush
 
+@section('title', 'Cadastro de Produto')
+
 @section('content')
 <h2 class="page-title">Cadastro de Produto</h2>
 <div class="main-container">

@@ -22,6 +22,10 @@
         @endforeach
     </div>
 
+    <div class="pagination-wrapper">
+        {{ $favoriteProducts->withQueryString()->links() }}
+    </div>
+
     @endif
 
 @endsection

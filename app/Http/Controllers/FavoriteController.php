@@ -33,7 +33,8 @@ class FavoriteController extends Controller
 
         $user = auth()->user();
         $favoriteProducts = $user->favoriteProducts()
-        ->get();
+        ->latest()
+        ->paginate(9);
 
         return view('customer.favorites', compact('favoriteProducts'));
     }
