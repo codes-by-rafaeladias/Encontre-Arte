@@ -42,7 +42,7 @@ class UserProfileController extends Controller
 
         $user->save();
 
-       return redirect()->route('logout')->with('success', 'Cadastro feito com sucesso.');
+       return redirect()->route('painel.artesao')->with('success', 'Cadastro feito com sucesso.');
     }
 
     public function update(Request $request)

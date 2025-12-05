@@ -43,12 +43,13 @@ class AuthController extends Controller
             'profile_image' => null,
         ]);
 
+        Auth::login($user);
+
         if ($user->type === 'artisan') {
-            Auth::login($user);
             return redirect()->route('perfil.cadastro');
         }
 
-        return redirect()->route('login')->with('success', 'Cadastro feito com sucesso.');
+        return redirect()->route('painel.cliente')->with('success', 'Cadastro feito com sucesso.');
     }
 
     public function showLogin()

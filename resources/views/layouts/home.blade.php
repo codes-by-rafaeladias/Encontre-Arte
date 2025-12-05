@@ -21,6 +21,8 @@
     </main>
 
     @include('components.footer')
+    @include('components.alerts')
+    @stack('scripts')
 
 </body>
 </html>

@@ -71,7 +71,7 @@ class PasswordController extends Controller
         );
 
         return $status === Password::PASSWORD_RESET
-            ? back()->redirect()->route('login')->with('success', 'Senha redefinida com sucesso!')
+            ? redirect()->route('login')->with('success', 'Senha redefinida com sucesso!')
             : back()->withErrors(['email' => [__($status)]]);
     }
 }
