@@ -50,6 +50,7 @@
 .avatar-img {
     width: 28px;
     height: 28px;
+    border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
     transition: opacity .2s ease;
