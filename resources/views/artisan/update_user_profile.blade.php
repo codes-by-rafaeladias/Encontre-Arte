@@ -29,7 +29,7 @@
         class="btn btn-primary btn-medio">
             Alterar Imagem
         </button>
-        <input type="file" id="profile_image" name="profile_image" class="d-none">
+        <input type="file" id="profile_image" name="profile_image" class="d-none" accept="image/png, image/jpeg, image/jpg, image/webp">
         <div class="input-group">
             <label for="name" class="input-label">
                 Nome Completo <span class="required">*</span>

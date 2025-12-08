@@ -27,7 +27,7 @@
             class="btn btn-primary btn-medio">
             Alterar Imagem
             </button>
-            <input type="file" id="image_url" name="image_url" class="d-none">
+            <input type="file" id="image_url" name="image_url" class="d-none" accept="image/png, image/jpeg, image/jpg, image/webp">
         <div class="input-group">
             <label for="name" class="input-label">
                 Nome <span class="required">*</span>

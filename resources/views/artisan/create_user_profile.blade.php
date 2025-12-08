@@ -23,7 +23,7 @@
         class="btn btn-primary btn-medio">
             Enviar Imagem
         </button>
-        <input type="file" id="profile_image" name="profile_image" class="d-none">
+        <input type="file" id="profile_image" name="profile_image" class="d-none" accept="image/png, image/jpeg, image/jpg, image/webp">
         <div class="input-group">
             <label for="business_name" class="input-label">
                 Nome Comercial
