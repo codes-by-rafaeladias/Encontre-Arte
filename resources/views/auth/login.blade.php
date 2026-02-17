@@ -14,7 +14,8 @@
 
     <div class="login-right">
         <div class="login-box">
-            <h1 class="login-title">Encontre Arte</h1>
+
+            <img src="{{ asset('images/logo-picture.png') }}" alt="Encontre Arte">
 
             <form method="POST" action="{{ route('login.entrar') }}" class="login-form">
             @csrf

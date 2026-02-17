@@ -37,11 +37,10 @@
   align-items: center;           
 }
 
-.login-title {
-  color: var(--color-primary);
-  font-size: var(--font-size-2xl);
-  font-weight: 700;
-  margin-top: 0;  
+.login-box img {
+  margin-top:0;
+  max-height: 120px;
+  width: auto;
 }
 
 .login-form {
