@@ -21,6 +21,7 @@ class Product extends Model
         'price',
         'category',
         'image_url',
+        'status',
     ];
 
     /**
@@ -45,25 +46,47 @@ class Product extends Model
     
     public function reviews()
     {
-        return $this->hasMany(Review::class);
+        return $this->hasMany(ProductReview::class);
     }
     
     public function averageRating()
     {
         return $this->reviews()->avg('rating') ?? 0;
     }
+
+    public function materials()
+    {
+        return $this->belongsToMany(Material::class);
+    }
     
+    public function techniques()
+    {
+        return $this->belongsToMany(Technique::class);
+    }
+
     /**
      * Gera slug automaticamente ao criar
      */
     protected static function boot()
-    {
-        parent::boot();
+{
+    parent::boot();
 
-        static::creating(function ($product) {
-            if (empty($product->slug)) {
-                $product->slug = Str::slug($product->name) . '-' . uniqid();
+    static::creating(function ($product) {
+
+        if (empty($product->slug)) {
+
+            $baseSlug = Str::slug($product->name);
+            $slug = $baseSlug;
+            $count = 1;
+
+            while (self::where('slug', $slug)->exists()) {
+                $slug = $baseSlug . '-' . $count;
+                $count++;
             }
-        });
-    }
+
+            $product->slug = $slug;
+        }
+
+    });
+}
 }

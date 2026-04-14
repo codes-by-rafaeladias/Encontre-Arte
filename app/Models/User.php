@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\CustomResetPassword;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -21,6 +22,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'bio',
         'profile_image',
         'is_active',
+        'slug',
+        'city',
+        'state',
+        'whatsapp',
+        'instagram',
     ];
 
     protected $hidden = [
@@ -49,14 +55,45 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Product::class, 'favorites', 'customer_id', 'product_id');
     }
 
-    public function reviews()
+    public function productReviews()
     {
-        return $this->hasMany(\App\Models\Review::class, 'customer_id');
+        return $this->hasMany(\App\Models\ProductReview::class, 'customer_id');
     }
 
-    public function receivedReviews()
+    public function receivedProductReviews()
     {
-        return Review::whereIn('product_id', $this->products()->pluck('id'));
+        return ProductReview::whereIn('product_id', $this->products()->pluck('id'));
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'customer_id', 'artisan_id');
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'artisan_id', 'customer_id');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            // só gera slug se for artesão
+            if ($user->type === 'artisan' && empty($user->slug)) {
+                $baseSlug = Str::slug($user->business_name ?? $user->name);
+                $slug = $baseSlug;
+                $count = 1;
+                
+                while (self::where('slug', $slug)->exists()) {
+                    $slug = $baseSlug . '-' . $count;
+                    $count++;
+                    }
+                    
+                $user->slug = $slug;
+            }
+        });
     }
 
 }
