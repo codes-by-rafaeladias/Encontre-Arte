@@ -32,18 +32,78 @@
                 type="text" 
                 id="business_name" 
                 name="business_name"
-                class="input-text"
+                value="{{ old('business_name') }}"
+                class="input-text @error('business_name') input-error @enderror"
+            >
+        </div>
+        <div class="input-group">
+            <label for="state" class="input-label">
+                Estado <span class="required">*</span>
+            </label>
+            <input 
+                type="text" 
+                id="state" 
+                name="state"
+                value="{{ old('state') }}"
+                class="input-text @error('state') input-error @enderror"
+                required
+            >
+        </div>
+        <div class="input-group">
+            <label for="city" class="input-label">
+                Cidade <span class="required">*</span>
+            </label>
+            <input 
+                type="text" 
+                id="city" 
+                name="city"
+                value="{{ old('city') }}"
+                class="input-text @error('city') input-error @enderror"
+                required
+            >
+        </div>
+        <div class="input-group">
+            <label for="whatsapp" class="input-label">
+                Whatsapp
+            </label>
+            <input 
+                type="text" 
+                id="whatsapp" 
+                name="whatsapp"
+                value="{{ old('whatsapp') }}"
+                class="input-text @error('whatsapp') input-error @enderror"
+            >
+        </div>
+        <div class="input-group">
+            <label for="instagram" class="input-label">
+                Instagram
+            </label>
+            <input 
+                type="text" 
+                id="instagram" 
+                name="instagram"
+                value="{{ old('instagram') }}"
+                class="input-text @error('instagram') input-error @enderror"
             >
         </div>
         <div class="input-group">
             <label for="bio" class="input-label">
-                Biografia
+                Conte a história do seu trabalho
             </label>
-            <textarea name="bio" id="bio"></textarea>
+            <textarea placeholder="Compartilhe como começou, suas inspirações e o que torna seu trabalho único..." name="bio" id="bio"></textarea>
         </div>
             <button type="submit" class="btn btn-primary btn-largo">
                 Finalizar Cadastro
             </button>
+            @if ($errors->any())
+            <div class="form-error-box">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+    @endif
     </form>
 </div>
 @endsection
@@ -64,5 +124,19 @@ document.getElementById('profile_image').onchange = function(e) {
         
     }
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+    const inputs = document.querySelectorAll(".input-text");
+
+    inputs.forEach(input => {
+        input.addEventListener("input", () => {
+
+            input.classList.remove("input-error");
+
+            const errorBox = document.querySelector(".form-error-box");
+            if (errorBox) errorBox.style.display = "none";
+        });
+    });
+});
 </script>
 @endpush
