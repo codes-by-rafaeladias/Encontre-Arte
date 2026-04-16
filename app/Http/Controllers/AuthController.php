@@ -48,8 +48,9 @@ class AuthController extends Controller
         if ($user->type === 'artisan') {
             return redirect()->route('perfil.cadastro');
         }
-
-        return redirect()->route('painel.cliente')->with('success', 'Cadastro feito com sucesso.');
+        else{
+            return redirect()->route('cliente.perfil');
+        }
     }
 
     public function showLogin()

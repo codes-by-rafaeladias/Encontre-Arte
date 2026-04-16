@@ -11,6 +11,7 @@ use App\Http\Controllers\ArtisanPublicController;
 use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\CustomerReviewController;
 use App\Http\Controllers\ArtisanReviewController;
+use App\Http\Controllers\CustomerProfileController;
 
 //auth
 
@@ -61,9 +62,13 @@ Route::middleware(['auth', 'artisan'])->group(function () {
 
 //rotas para clientes
 Route::middleware(['auth', 'customer'])->group(function () {
+    Route::get('/cadastro_perfil_cliente', [CustomerProfileController::class, 'showCreateProfileForm'])->name('cliente.perfil');
+    Route::patch('/cadastro_perfil_cliente', [CustomerProfileController::class, 'create'])->name('cliente.salvar_perfil');
     Route::get('/painel/cliente', function () {
     return view('home.customer');
     })->name('painel.cliente');
+    Route::get('/perfil_cliente', [CustomerProfileController::class, 'showUpdateProfileForm'])->name('cliente.formulario_atualizar');
+    Route::patch('/perfil_cliente', [CustomerProfileController::class, 'update'])->name('cliente.atualizar');
     Route::get('/produtos', [CustomerProductController::class, 'listAllProducts'])
      ->name('cliente.produtos');
      Route::post('/produto/favoritar/{id}', [FavoriteController::class, 'toggle'])
