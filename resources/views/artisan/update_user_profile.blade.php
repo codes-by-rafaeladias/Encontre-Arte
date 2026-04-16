@@ -56,10 +56,60 @@
             >
         </div>
         <div class="input-group">
-            <label for="bio" class="input-label">
-                Biografia
+            <label for="state" class="input-label">
+                Estado <span class="required">*</span>
             </label>
-            <textarea name="bio" id="bio">{{ old('bio', $user->bio) }}</textarea>
+            <input 
+                type="text" 
+                id="state" 
+                name="state"
+                value="{{ old('state', $user->state ?? '') }}"
+                class="input-text @error('state') input-error @enderror"
+                required
+            >
+        </div>
+        <div class="input-group">
+            <label for="city" class="input-label">
+                Cidade <span class="required">*</span>
+            </label>
+            <input 
+                type="text" 
+                id="city" 
+                name="city"
+                value="{{ old('city', $user->city ?? '') }}"
+                class="input-text @error('city') input-error @enderror"
+                required
+            >
+        </div>
+        <div class="input-group">
+            <label for="whatsapp" class="input-label">
+                Whatsapp
+            </label>
+            <input 
+                type="text" 
+                id="whatsapp" 
+                name="whatsapp"
+                value="{{ old('whatsapp', $user->whatsapp ?? '') }}"
+                class="input-text @error('whatsapp') input-error @enderror"
+            >
+        </div>
+        <div class="input-group">
+            <label for="instagram" class="input-label">
+                Instagram
+            </label>
+            <input 
+                type="text" 
+                id="instagram" 
+                name="instagram"
+                value="{{ old('instagram', $user->instagram ?? '') }}"
+                class="input-text @error('instagram') input-error @enderror"
+            >
+        </div>
+        <div class="input-group">
+            <label for="bio" class="input-label">
+                Conte a história do seu trabalho
+            </label>
+            <textarea  placeholder="Compartilhe como começou, suas inspirações e o que torna seu trabalho único..." name="bio" id="bio">{{ old('bio', $user->bio) }}</textarea>
         </div>
             <button type="submit" class="btn btn-primary btn-largo">
                 Salvar Alterações

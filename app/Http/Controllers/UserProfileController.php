@@ -25,13 +25,13 @@ class UserProfileController extends Controller
             'profile_image'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'state'          => 'required|string',
             'city'           => 'required|string',
-            'whatsapp'       => 'nullable|regex:/^55[0-9]{10,11}$/',
+            'whatsapp'       => 'nullable|regex:/^(\+55)?\d{10,11}$/',
             'instagram'      => 'nullable|regex:/^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._]+\/?$|^@?[A-Za-z0-9._]+$/',
         ],
         [
             'state.required' => 'O campo estado é obrigatório.',
             'city.required' => 'O campo cidade é obrigatório.',
-            'whatsapp.regex' => 'Digite um WhatsApp válido: 55DDDXXXXXXXX',
+            'whatsapp.regex' => 'Digite um WhatsApp válido.',
             'instagram.regex' => 'Digite um usuário válido do Instagram.',
         ]);
 
@@ -75,14 +75,33 @@ class UserProfileController extends Controller
             'business_name'  => 'nullable|string|max:255',
             'bio'            => 'nullable|string',
             'profile_image'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'state'          => 'required|string',
+            'city'           => 'required|string',
+            'whatsapp'       => 'nullable|regex:/^(\+55)?\d{10,11}$/',
+            'instagram'      => 'nullable|regex:/^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._]+\/?$|^@?[A-Za-z0-9._]+$/',
         ],
         [
             'name.required' => 'O campo nome é obrigatório.',
+            'state.required' => 'O campo estado é obrigatório.',
+            'city.required' => 'O campo cidade é obrigatório.',
+            'whatsapp.regex' => 'Digite um WhatsApp válido.',
+            'instagram.regex' => 'Digite um usuário válido do Instagram.',
         ]);
 
         $user->name = $request->name;
         $user->business_name = $request->business_name;
         $user->bio = $request->bio;
+        $user->state = $request->state;
+        $user->city = $request->city;
+
+        if ($request->filled('whatsapp')) {
+            $user->whatsapp = preg_replace('/\D/', '', $request->whatsapp);
+        }
+
+        if ($request->filled('instagram')) {
+            $user->instagram = str_replace(['https://instagram.com/', 'https://www.instagram.com/', 'www.instagram.com/'], '', $request->instagram);
+            $user->instagram = ltrim($instagram, '@');
+        }
 
         if ($request->hasFile('profile_image')) {
 
