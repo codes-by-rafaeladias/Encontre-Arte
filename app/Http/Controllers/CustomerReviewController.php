@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Review;
+use App\Models\ProductReview;
 use Illuminate\Http\Request;
 
 class CustomerReviewController extends Controller
@@ -20,7 +20,7 @@ class CustomerReviewController extends Controller
 
     public function destroy($id)
     {
-        $review = Review::where('id', $id)
+        $review = ProductReview::where('id', $id)
                         ->where('customer_id', auth()->id())
                         ->firstOrFail();
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Review;
+use App\Models\ProductReview;
 use Illuminate\Http\Request;
 
 class ProductReviewController extends Controller
@@ -15,7 +15,7 @@ class ProductReviewController extends Controller
             'comment' => 'nullable|string|max:500',
         ]);
 
-        Review::updateOrCreate(
+        ProductReview::updateOrCreate(
             [
                 'customer_id' => auth()->id(),
                 'product_id' => $productId,
@@ -31,7 +31,7 @@ class ProductReviewController extends Controller
 
     public function update(Request $request, $id)
     {
-        $review = Review::where('id', $id)
+        $review = ProductReview::where('id', $id)
                         ->where('customer_id', auth()->id())
                         ->firstOrFail();
 

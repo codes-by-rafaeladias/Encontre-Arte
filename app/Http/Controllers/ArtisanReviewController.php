@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Review;
+use App\Models\ProductReview;
 use Illuminate\Support\Facades\Auth;
 
 class ArtisanReviewController extends Controller
@@ -13,7 +13,7 @@ class ArtisanReviewController extends Controller
 
         $productIds = $artisan->products()->pluck('id');
 
-        $reviews = Review::with(['product', 'user'])
+        $reviews = ProductReview::with(['product', 'user'])
             ->whereIn('product_id', $productIds)
             ->latest()
             ->paginate(10);
