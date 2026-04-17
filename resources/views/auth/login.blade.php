@@ -17,7 +17,7 @@
 
             <img src="{{ asset('images/logo-picture.png') }}" alt="Encontre Arte">
 
-            <form method="POST" action="{{ route('login.entrar') }}" class="login-form">
+            <form method="POST" action="{{ route('auth.login.store') }}" class="login-form">
             @csrf
 
                     <input type="email" id="email" name="email" class="input-text" placeholder="E-mail" required>
@@ -34,11 +34,11 @@
                     </p>
             @endif
 
-            <a href="{{ route('senha.recuperar') }}" class="forgot-link">Esqueceu a senha?</a>
+            <a href="{{ route('auth.password.request') }}" class="forgot-link">Esqueceu a senha?</a>
 
             <hr class="divider">
 
-            <a href="{{ route('cadastro') }}" class="btn btn-secondary btn-largo margin-med">Criar Conta</a>
+            <a href="{{ route('auth.register') }}" class="btn btn-secondary btn-largo margin-med">Criar Conta</a>
         </div>
     </div>
 </div>

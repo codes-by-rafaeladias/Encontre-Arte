@@ -10,7 +10,7 @@
         <div class="register-box">
             <h1 class="register-title">Recuperação de Senha</h1>
 
-            <form method="POST" action="{{ route('senha.email') }}" class="register-form">
+            <form method="POST" action="{{ route('auth.password.email') }}" class="register-form">
             @csrf
                 <div class="input-group">
                     <label for="email" class="input-label">E-mail</label>

@@ -14,5 +14,6 @@
     <x-card_button icone="fa-solid fa-star" titulo="Avaliações" rota="cliente.avaliacoes"/>
     <x-card_button icone="fa-solid fa-heart" titulo="Favoritos" rota="favoritos.lista"/>
     <x-card_button icone="fa-solid fa-user" titulo="Perfil de Usuário" rota="cliente.formulario_atualizar"/>
+    <x-card_button icone="fa-solid fa-users" titulo="Seguindo" rota="favoritos.lista"/>
 </div>
 @endsection

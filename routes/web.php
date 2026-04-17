@@ -13,31 +13,34 @@ use App\Http\Controllers\CustomerReviewController;
 use App\Http\Controllers\ArtisanReviewController;
 use App\Http\Controllers\CustomerProfileController;
 
-//auth
-
 //rota inicial do sistema
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect()->route('auth.login');
 });
 
-Route::get('/cadastro', [AuthController::class, 'showRegister'])->name('cadastro');
-Route::post('/cadastro', [AuthController::class, 'register'])->name('cadastro.salvar');
+//auth = rotas públicas
+Route::prefix('auth')->name('auth.')->group(function () {
+    Route::get('/cadastro', [AuthController::class, 'showRegister'])->name('register');
+    Route::post('/cadastro', [AuthController::class, 'register'])->name('register.store');
+    
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.store');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->name('login.entrar');
-Route::get('/sair', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/esqueci-senha', [PasswordController::class, 'showForgotForm'])
+        ->name('password.request');
+    Route::post('/esqueci-senha', [PasswordController::class, 'sendResetLink'])
+        ->name('password.email');
+    
+    Route::get('/redefinir-senha/{token}', [PasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/redefinir-senha', [PasswordController::class, 'resetPassword'])->name('password.update');
+    
+    Route::post('/enviar-link', function (Request $request) {
+        $request->user()->sendEmailVerificationNotification();
+        return back()->with('message', 'Link de verificação reenviado!');
+    })->middleware(['auth', 'throttle:6,1'])->name('token.email');
 
-Route::get('/esqueci_senha', [PasswordController::class, 'showForgotForm'])->name('senha.recuperar');
-Route::post('/esqueci_senha', [PasswordController::class, 'sendResetLink'])->name('senha.email');
-
-Route::get('/redefinir_senha/{token}', [PasswordController::class, 'showResetForm'])->name('senha.redefinir');
-Route::post('/redefinir_senha', [PasswordController::class, 'resetPassword'])->name('senha.atualizar');
-
-Route::post('/enviar_link', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
-
-    return back()->with('message', 'Link de verificação reenviado!');
-})->middleware(['auth', 'throttle:6,1'])->name('email.enviar_link');
+});
 
 //rotas para artesãos
 Route::middleware(['auth', 'artisan'])->group(function () {

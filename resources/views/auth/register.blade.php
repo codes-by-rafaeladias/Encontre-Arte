@@ -10,7 +10,7 @@
 <div class="register-box">
     <h1 class="register-title">Cadastre-se Agora</h1>
 
-    <form method="POST" action="{{ route('cadastro.salvar') }}" class="register-form">
+    <form method="POST" action="{{ route('auth.register.store') }}" class="register-form">
         @csrf
 
         <div class="input-group">
@@ -124,7 +124,7 @@
 
     <p class="spacing-link">
         Tem uma conta?  
-        <a href="{{ route('login') }}">Entre</a>
+        <a href="{{ route('auth.login') }}">Entre</a>
     </p>
 
 </div>

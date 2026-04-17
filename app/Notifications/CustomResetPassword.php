@@ -22,7 +22,7 @@ class CustomResetPassword extends Notification
 
     public function toMail($notifiable)
     {
-        $url = url(route('senha.redefinir', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false));
+        $url = url(route('auth.password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false));
 
         return (new MailMessage)
             ->subject('Redefinição de senha - Encontre Arte')

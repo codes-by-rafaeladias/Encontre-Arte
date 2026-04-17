@@ -10,7 +10,7 @@
         <div class="register-box">
             <h1 class="register-title">Redefinição de Senha</h1>
 
-            <form method="POST" action="{{ route('senha.atualizar') }}" class="register-form">
+            <form method="POST" action="{{ route('auth.password.update') }}" class="register-form">
             @csrf
 
                 <input type="hidden" name="token" value="{{ request('token') }}">

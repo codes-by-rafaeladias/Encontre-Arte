@@ -36,10 +36,10 @@
             </div>
             @endif
         </a>
-        <a href="{{ route('logout') }}">
-            <img src="{{ asset('images/logout.png') }}" alt="Sair" class="logout-icon">
-        </a>
-
+        <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+        <img src="{{ asset('images/logout.png') }}" title="Sair" alt="Sair" class="logout-icon" onclick="document.querySelector('#logout-form').submit();">
     </div>
 
 </header>
