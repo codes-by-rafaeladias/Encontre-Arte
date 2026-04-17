@@ -25,14 +25,16 @@ class UserProfileController extends Controller
             'profile_image'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'state'          => 'required|string',
             'city'           => 'required|string',
-            'whatsapp'       => 'nullable|regex:/^(\+55)?\d{10,11}$/',
-            'instagram'      => 'nullable|regex:/^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._]+\/?$|^@?[A-Za-z0-9._]+$/',
+            'whatsapp'       => 'nullable|regex:/^(\+55)?\d{10,11}$/|unique:users,whatsapp',
+            'instagram'      => 'nullable|regex:/^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._]+\/?$|^@?[A-Za-z0-9._]+$/|unique:users,instagram',
         ],
         [
             'state.required' => 'O campo estado é obrigatório.',
             'city.required' => 'O campo cidade é obrigatório.',
             'whatsapp.regex' => 'Digite um WhatsApp válido.',
             'instagram.regex' => 'Digite um usuário válido do Instagram.',
+            'whatsapp.unique' => 'Digite um WhatsApp válido.',
+            'instagram.unique' => 'Digite um usuário válido do Instagram.',
         ]);
 
         $user->business_name = $request->business_name;
@@ -41,7 +43,13 @@ class UserProfileController extends Controller
         $user->city = $request->city;
 
         if ($request->filled('whatsapp')) {
-            $user->whatsapp = preg_replace('/\D/', '', $request->whatsapp);
+            $number = preg_replace('/\D/', '', $request->whatsapp);
+
+            if (!str_starts_with($number, '55')) {
+                $number = '55' . $number;
+            }
+            
+            $user->whatsapp = '+' . $number;
         }
 
         if ($request->filled('instagram')) {
@@ -77,8 +85,8 @@ class UserProfileController extends Controller
             'profile_image'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'state'          => 'required|string',
             'city'           => 'required|string',
-            'whatsapp'       => 'nullable|regex:/^(\+55)?\d{10,11}$/',
-            'instagram'      => 'nullable|regex:/^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._]+\/?$|^@?[A-Za-z0-9._]+$/',
+            'whatsapp'       => 'nullable|regex:/^(\+55)?\d{10,11}$/|unique:users,whatsapp',
+            'instagram'      => 'nullable|regex:/^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._]+\/?$|^@?[A-Za-z0-9._]+$/|unique:users,instagram',
         ],
         [
             'name.required' => 'O campo nome é obrigatório.',
@@ -86,6 +94,8 @@ class UserProfileController extends Controller
             'city.required' => 'O campo cidade é obrigatório.',
             'whatsapp.regex' => 'Digite um WhatsApp válido.',
             'instagram.regex' => 'Digite um usuário válido do Instagram.',
+            'whatsapp.unique' => 'Digite um WhatsApp válido.',
+            'instagram.unique' => 'Digite um usuário válido do Instagram.',
         ]);
 
         $user->name = $request->name;
@@ -95,7 +105,13 @@ class UserProfileController extends Controller
         $user->city = $request->city;
 
         if ($request->filled('whatsapp')) {
-            $user->whatsapp = preg_replace('/\D/', '', $request->whatsapp);
+            $number = preg_replace('/\D/', '', $request->whatsapp);
+
+            if (!str_starts_with($number, '55')) {
+                $number = '55' . $number;
+            }
+            
+            $user->whatsapp = '+' . $number;
         }
 
         if ($request->filled('instagram')) {
