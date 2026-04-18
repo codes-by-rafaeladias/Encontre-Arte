@@ -46,7 +46,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         if ($user->type === 'artisan') {
-            return redirect()->route('perfil.cadastro');
+            return redirect()->route('artisan.profile.index');
         }
         else{
             return redirect()->route('cliente.perfil');
@@ -87,7 +87,7 @@ class AuthController extends Controller
     private function redirectByType(User $user)
     {
         if ($user->type === 'artisan') {
-            return redirect()->route('painel.artesao');
+            return redirect()->route('artisan.home');
         }
 
         return redirect()->route('painel.cliente');

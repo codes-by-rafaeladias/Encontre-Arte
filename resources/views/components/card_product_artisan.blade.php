@@ -9,12 +9,12 @@
     <p class="card-price">R$ {{ number_format($product->price, 2, ',', '.') }}</p>
 
     <div class="card-buttons">
-      <form action="{{ route('produto.edicao', $product->id) }}" method="GET">
+      <form action="{{ route('artisan.products.update.index', $product->id) }}" method="GET">
           <button type="submit" class="btn btn-primary btn-pequeno">
             Editar
           </button>
       </form>
-      <form action="{{ route('produtos.excluir', $product->id) }}" 
+      <form action="{{ route('artisan.products.destroy', $product->id) }}" 
             method="POST" 
             style="display:inline">
           @csrf

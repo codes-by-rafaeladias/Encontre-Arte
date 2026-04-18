@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
-class UserProfileController extends Controller
+class ArtisanProfileController extends Controller
 {
     public function showCreateProfileForm(){
          return view('artisan.create_user_profile');
@@ -71,7 +72,7 @@ class UserProfileController extends Controller
 
         $user->save();
 
-       return redirect()->route('painel.artesao')->with('success', 'Cadastro feito com sucesso.');
+       return redirect()->route('artisan.home')->with('success', 'Cadastro feito com sucesso.');
     }
 
     public function update(Request $request)
@@ -85,8 +86,8 @@ class UserProfileController extends Controller
             'profile_image'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'state'          => 'required|string',
             'city'           => 'required|string',
-            'whatsapp'       => 'nullable|regex:/^(\+55)?\d{10,11}$/|unique:users,whatsapp',
-            'instagram'      => 'nullable|regex:/^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._]+\/?$|^@?[A-Za-z0-9._]+$/|unique:users,instagram',
+            'whatsapp' => ['nullable', 'regex:/^(\+55)?\d{10,11}$/', Rule::unique('users', 'whatsapp')->ignore($user->id),],
+            'instagram' => ['nullable','regex:/^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._]+\/?$|^@?[A-Za-z0-9._]+$/', Rule::unique('users', 'instagram')->ignore($user->id),],
         ],
         [
             'name.required' => 'O campo nome é obrigatório.',
@@ -116,7 +117,7 @@ class UserProfileController extends Controller
 
         if ($request->filled('instagram')) {
             $user->instagram = str_replace(['https://instagram.com/', 'https://www.instagram.com/', 'www.instagram.com/'], '', $request->instagram);
-            $user->instagram = ltrim($instagram, '@');
+            $user->instagram = ltrim($user->instagram, '@');
         }
 
         if ($request->hasFile('profile_image')) {

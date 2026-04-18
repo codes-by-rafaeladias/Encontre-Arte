@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="main-container">
-    <form method="POST" action="{{ route('perfil.salvar') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('artisan.profile.create') }}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <div class="profile-avatar">

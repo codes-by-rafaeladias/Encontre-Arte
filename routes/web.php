@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PasswordController;
-use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\ArtisanProfileController;
 use App\Http\Controllers\ArtisanProductController;
 use App\Http\Controllers\CustomerProductController;
 use App\Http\Controllers\FavoriteController;
@@ -43,24 +43,24 @@ Route::prefix('auth')->name('auth.')->group(function () {
 });
 
 //rotas para artesãos
-Route::middleware(['auth', 'artisan'])->group(function () {
-    Route::get('/cadastro_perfil_usuario', [UserProfileController::class, 'showCreateProfileForm'])->name('perfil.cadastro');
-    Route::patch('/cadastro_perfil_usuario', [UserProfileController::class, 'create'])
-    ->name('perfil.salvar');
-    Route::get('/painel/artesao', function () {
+Route::prefix('artesao')->name('artisan.')->middleware(['auth', 'artisan'])->group(function () {
+    Route::get('/perfil', [ArtisanProfileController::class, 'showCreateProfileForm'])->name('profile.index');
+    Route::patch('/perfil', [ArtisanProfileController::class, 'create'])
+    ->name('profile.create');
+    Route::get('/', function () {
     return view('home.artisan');})
-    ->name('painel.artesao');
-    Route::get('/perfil_usuario', [UserProfileController::class, 'showUpdateProfileForm'])->name('perfil.usuario');
-    Route::patch('/perfil_usuario', [UserProfileController::class, 'update'])->name('perfil.atualizar');
-    Route::get('/meus_produtos', [ArtisanProductController::class, 'listProducts'])->name('artesao.produtos');
-    Route::get('/produtos/cadastro', [ArtisanProductController::class, 'create'])->name('produtos.cadastro');
-    Route::patch('/produtos/cadastro', [ArtisanProductController::class, 'store'])->name('produtos.salvar');
-    Route::get('/produtos/{id}/editar', [ArtisanProductController::class, 'showUpdateProductForm'])->name('produto.edicao');
-    Route::put('/produtos/{id}', [ArtisanProductController::class, 'update'])
-        ->name('produto.atualizar');
-    Route::delete('/produtos/{id}', [ArtisanProductController::class, 'destroy'])->name('produtos.excluir');
-    Route::get('/artesao/avaliacoes', [ArtisanReviewController::class, 'listReviews']
-    )->name('artesao.avaliacoes');
+    ->name('home');
+    Route::get('/perfil/editar', [ArtisanProfileController::class, 'showUpdateProfileForm'])->name('profile.data');
+    Route::patch('/perfil/editar', [ArtisanProfileController::class, 'update'])->name('profile.update');
+    Route::get('/produtos', [ArtisanProductController::class, 'listProducts'])->name('products.index');
+    Route::get('/produtos/cadastro', [ArtisanProductController::class, 'create'])->name('products.create');
+    Route::patch('/produtos/cadastro', [ArtisanProductController::class, 'store'])->name('products.store');
+    Route::get('/produtos/{id}/editar', [ArtisanProductController::class, 'showUpdateProductForm'])->name('products.update.index');
+    Route::put('/produtos/{id}/editar', [ArtisanProductController::class, 'update'])
+        ->name('products.update.update');
+    Route::delete('/produtos/{id}', [ArtisanProductController::class, 'destroy'])->name('products.destroy');
+    Route::get('/avaliacoes', [ArtisanReviewController::class, 'listReviews']
+    )->name('reviews.index');
 });
 
 //rotas para clientes

@@ -9,7 +9,7 @@
 @section('content')
 <div class="title-action">
     <h2 class="title">Meus Produtos</h2>
-    <form action="{{ route('produtos.cadastro') }}" method="GET">
+    <form action="{{ route('artisan.products.create') }}" method="GET">
         <button type="submit" class="btn btn-primary btn-medio">
             Novo Produto
         </button>

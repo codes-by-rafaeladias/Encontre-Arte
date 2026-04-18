@@ -9,7 +9,7 @@
 @section('content')
 <h2 class="page-title">Cadastro de Produto</h2>
 <div class="main-container">
-    <form method="POST" action="{{ route('produtos.salvar') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('artisan.products.store') }}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <div class="image-upload-wrapper">

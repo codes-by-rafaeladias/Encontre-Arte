@@ -3,7 +3,7 @@
 
 @php
     $link = auth()->user()->type === 'artisan'
-        ? route('painel.artesao')
+        ? route('artisan.home')
         : route('painel.cliente');
 @endphp
 <header class="header">

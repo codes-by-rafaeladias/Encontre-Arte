@@ -9,7 +9,7 @@
 @section('content')
 <h2 class="page-title">Edição de Perfil de Usuário</h2>
 <div class="main-container">
-    <form method="POST" action="{{ route('perfil.atualizar') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('artisan.profile.update') }}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <div class="profile-avatar">

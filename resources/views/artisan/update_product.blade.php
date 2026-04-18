@@ -9,7 +9,7 @@
 @section('content')
 <h2 class="page-title">Edição de Produto</h2>
 <div class="main-container">
-    <form method="POST" action="{{ route('produto.atualizar', $product->id) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('artisan.products.update.update', $product->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="image-upload-wrapper">

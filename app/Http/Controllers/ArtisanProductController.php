@@ -112,7 +112,7 @@ class ArtisanProductController extends Controller
         $product->delete();
 
         return redirect()
-            ->route('artesao.produtos')
+            ->route('artisan.products.index')
             ->with('success', 'Produto excluído com sucesso!');
     }
 
