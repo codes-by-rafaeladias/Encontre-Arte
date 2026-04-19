@@ -10,7 +10,7 @@
 
 <h2 class="title">Artesãos</h2>
 
-<form action="{{ route('cliente.artesaos') }}" method="GET" class="search-form">
+<form action="{{ route('customer.artisans.index') }}" method="GET" class="search-form">
     <x-search_bar 
         name="search"
         placeholder="Buscar artesãos..."

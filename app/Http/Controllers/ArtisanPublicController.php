@@ -6,9 +6,9 @@ use App\Models\User;
 
 class ArtisanPublicController extends Controller
 {
-    public function show($id)
+    public function show($slug)
     {
-        $artisan = User::where('id', $id)
+        $artisan = User::where('slug', $slug)
                     ->where('type', 'artisan') 
                     ->firstOrFail();
 

@@ -14,16 +14,13 @@ use App\Http\Controllers\ArtisanReviewController;
 use App\Http\Controllers\CustomerProfileController;
 
 //rota inicial do sistema
-Route::get('/', function () {
-    return redirect()->route('auth.login');
-});
+Route::get('/', [AuthController::class, 'showLogin'])->name('login');
 
 //auth = rotas públicas
 Route::prefix('auth')->name('auth.')->group(function () {
     Route::get('/cadastro', [AuthController::class, 'showRegister'])->name('register');
     Route::post('/cadastro', [AuthController::class, 'register'])->name('register.store');
     
-    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('login.store');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -64,32 +61,32 @@ Route::prefix('artesao')->name('artisan.')->middleware(['auth', 'artisan'])->gro
 });
 
 //rotas para clientes
-Route::middleware(['auth', 'customer'])->group(function () {
-    Route::get('/cadastro_perfil_cliente', [CustomerProfileController::class, 'showCreateProfileForm'])->name('cliente.perfil');
-    Route::patch('/cadastro_perfil_cliente', [CustomerProfileController::class, 'create'])->name('cliente.salvar_perfil');
-    Route::get('/painel/cliente', function () {
+Route::prefix('cliente')->name('customer.')->middleware(['auth', 'customer'])->group(function () {
+    Route::get('/perfil', [CustomerProfileController::class, 'showCreateProfileForm'])->name('profile.index');
+    Route::patch('/perfil', [CustomerProfileController::class, 'create'])->name('profile.create');
+    Route::get('/', function () {
     return view('home.customer');
-    })->name('painel.cliente');
-    Route::get('/perfil_cliente', [CustomerProfileController::class, 'showUpdateProfileForm'])->name('cliente.formulario_atualizar');
-    Route::patch('/perfil_cliente', [CustomerProfileController::class, 'update'])->name('cliente.atualizar');
+    })->name('home');
+    Route::get('/perfil/editar', [CustomerProfileController::class, 'showUpdateProfileForm'])->name('profile.data');
+    Route::patch('/perfil/editar', [CustomerProfileController::class, 'update'])->name('profile.update');
     Route::get('/produtos', [CustomerProductController::class, 'listAllProducts'])
-     ->name('cliente.produtos');
-     Route::post('/produto/favoritar/{id}', [FavoriteController::class, 'toggle'])
-    ->name('produto.favoritar');
+     ->name('products.index');
+     Route::post('/produto/favoritar/{slug}', [FavoriteController::class, 'toggle'])
+    ->name('favorites.create');
     Route::get('/favoritos', [FavoriteController::class, 'listFavorites'])
-    ->name('favoritos.lista');
+    ->name('favorites.index');
     Route::get('/artesaos', [CustomerArtisanController::class, 'listArtisans'])
-    ->name('cliente.artesaos');
-    Route::get('/artesao/{id}', [ArtisanPublicController::class, 'show'])
-    ->name('artesao.perfil');
+    ->name('artisans.index');
+    Route::get('/artesao/{slug}', [ArtisanPublicController::class, 'show'])
+    ->name('artisan.profile');
     Route::get('/produto/{slug}', [CustomerProductController::class, 'showProduct'])
-    ->name('produto.info');
+    ->name('product.data');
     Route::post('/produto/{slug}', [ProductReviewController::class, 'store'])
-    ->name('avaliacao.cadastrar');
+    ->name('review.create');
     Route::put('/produto/{slug}', [ProductReviewController::class, 'update'])
-        ->name('avaliacao.atualizar');
-    Route::get('/minhas_avaliacoes', [CustomerReviewController::class, 'showReviews'])
-        ->name('cliente.avaliacoes');
+        ->name('review.update');
+    Route::get('/avaliacoes', [CustomerReviewController::class, 'showReviews'])
+        ->name('reviews.index');
     Route::delete('/avaliacao/{id}/excluir', [CustomerReviewController::class, 'destroy'])
-        ->name('avaliacao.excluir');
+        ->name('review.destroy');
 });

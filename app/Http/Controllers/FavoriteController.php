@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Favorite;
+use App\Models\Product;
 
 class FavoriteController extends Controller
 {
-    public function toggle($productId)
+    public function toggle($productSlug)
     {
         $user = auth()->user();
 
+        $product = Product::where('slug', $productSlug)->firstOrFail();
+
         $favorite = Favorite::where('customer_id', $user->id)
-                            ->where('product_id', $productId)
+                            ->where('product_id', $product->id)
                             ->first();
 
         if ($favorite) {
@@ -22,7 +25,7 @@ class FavoriteController extends Controller
 
         Favorite::create([
             'customer_id' => $user->id,
-            'product_id' => $productId,
+            'product_id' => $product->id,
         ]);
 
         return back()->with('success', 'Produto adicionado aos favoritos');

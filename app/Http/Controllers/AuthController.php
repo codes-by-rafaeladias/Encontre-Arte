@@ -49,7 +49,7 @@ class AuthController extends Controller
             return redirect()->route('artisan.profile.index');
         }
         else{
-            return redirect()->route('cliente.perfil');
+            return redirect()->route('customer.profile.index');
         }
     }
 
@@ -78,7 +78,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('auth.login');
+        return redirect()->route('login');
     }
 
     /**
@@ -90,6 +90,6 @@ class AuthController extends Controller
             return redirect()->route('artisan.home');
         }
 
-        return redirect()->route('painel.cliente');
+        return redirect()->route('customer.home');
     }
 }

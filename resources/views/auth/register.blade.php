@@ -124,7 +124,7 @@
 
     <p class="spacing-link">
         Tem uma conta?  
-        <a href="{{ route('auth.login') }}">Entre</a>
+        <a href="{{ route('login') }}">Entre</a>
     </p>
 
 </div>

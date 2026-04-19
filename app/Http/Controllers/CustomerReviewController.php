@@ -10,7 +10,7 @@ class CustomerReviewController extends Controller
     public function showReviews()
     {
         $reviews = auth()->user()
-            ->reviews()
+            ->productReviews()
             ->with('product')   
             ->latest()
             ->paginate(10);

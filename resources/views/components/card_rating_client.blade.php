@@ -35,7 +35,7 @@
             <button type="button" class="btn btn-primary btn-pequeno openReviewPopup">
                 Editar
             </button>
-            <form action="{{ route('avaliacao.excluir', $reviewId) }}" 
+            <form action="{{ route('customer.review.destroy', $reviewId) }}" 
             method="POST" 
             style="display:inline">
             @csrf
@@ -45,7 +45,7 @@
             </button>
       </form>
         </div>
-        <form id="reviewRealForm" method="POST" action="{{ route('avaliacao.atualizar', $reviewId) }}">
+        <form id="reviewRealForm" method="POST" action="{{ route('customer.review.update', $reviewId) }}">
             @csrf
             @method('PUT')
             <input type="hidden" name="rating" id="ratingField">

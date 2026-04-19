@@ -53,7 +53,7 @@
     @else
         <div class="product-gallery">
             @foreach($products as $product)
-                <a href="{{ route('produto.info', $product->slug) }}" class="gallery-item">
+                <a href="{{ route('customer.product.data', $product->slug) }}" class="gallery-item">
                     <img src="{{ asset('storage/' . $product->image_url) }}"
                          alt="{{ $product->name }}"
                          class="gallery-img">

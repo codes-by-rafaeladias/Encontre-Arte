@@ -29,7 +29,7 @@
             <p class="product-description">{{ $product->description }}</p>
 
             <p class="seller-label">Vendido por</p>
-            <a href="{{ route('artesao.perfil', $product->artisan_id) }}" class="seller-name">
+            <a href="{{ route('customer.artisan.profile', $product->artisan->slug) }}" class="seller-name">
                 {{ $product->artisan->business_name ?? $product->artisan->name }}
             </a>
 
@@ -58,7 +58,7 @@
 
             <div class="product-buttons">
 
-                <form action="{{ route('produto.favoritar', $product->id) }}" method="POST">
+                <form action="{{ route('customer.favorites.create', $product->slug) }}" method="POST">
                     @csrf
                     <button class="btn btn-secondary btn-medio">
                         {{ $isFavorited ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos' }}
@@ -70,7 +70,7 @@
                 </button>
 
             </div>
-            <form id="reviewRealForm" method="POST" action="{{ $userReview ? route('avaliacao.atualizar', $userReview->id) : route('avaliacao.cadastrar', $product->id) }}">
+            <form id="reviewRealForm" method="POST" action="{{ $userReview ? route('customer.review.update', $userReview->id) : route('customer.review.create', $product->id) }}">
     @csrf
     @if($userReview)
         @method('PUT')

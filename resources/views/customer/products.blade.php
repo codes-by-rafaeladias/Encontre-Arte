@@ -6,7 +6,7 @@
 @section('title', 'Produtos')
 @section('content')
 <h2 class="title">Produtos</h2>
-    <form action="{{ route('cliente.produtos') }}" method="GET" class="search-form">
+    <form action="{{ route('customer.products.index') }}" method="GET" class="search-form">
         <x-search_bar 
             name="search" 
             placeholder="Buscar produtos..."

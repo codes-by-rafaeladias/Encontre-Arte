@@ -4,7 +4,7 @@
 @php
     $link = auth()->user()->type === 'artisan'
         ? route('artisan.home')
-        : route('painel.cliente');
+        : route('customer.home');
 @endphp
 <header class="header">
 

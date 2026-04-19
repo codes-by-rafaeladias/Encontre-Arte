@@ -46,7 +46,7 @@ class CustomerProfileController extends Controller
 
         $user->save();
 
-       return redirect()->route('painel.cliente')->with('success', 'Cadastro feito com sucesso.');
+       return redirect()->route('customer.home')->with('success', 'Cadastro feito com sucesso.');
     }
 
     public function update(Request $request)
