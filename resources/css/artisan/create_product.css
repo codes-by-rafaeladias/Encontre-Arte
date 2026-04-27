@@ -39,6 +39,102 @@
     object-fit: contain;
 }
 
-textarea{
-    resize: none;
+.select-item{
+    padding: 0 12px;
+    width: 300px;
+    height: 40px;
+    background-color: var(--color-text-on-primary);
+    border: 1px solid var(--color-text);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    transition: 0.2s;
+}
+
+.select-item:focus{
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(142, 107, 191, 0.2);
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: "";
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    transform: translateY(-50%);
+    
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' fill='%238E6BBF' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7l5 5 5-5' stroke='%238E6BBF' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    pointer-events: none;
+}
+
+.ts-control {
+    padding: 12px !important;
+    width: 300px !important;
+    min-height: 40px !important;
+    background-color: var(--color-text-on-primary) !important;
+    border: 1px solid var(--color-text) !important;
+    border-radius: var(--border-radius) !important;
+    font-size: var(--font-size-sm) !important;
+    color: var(--color-text) !important;
+    box-sizing: border-box !important;
+    outline: none !important;
+    display: flex !important;
+    flex-wrap: wrap !important; 
+    gap: 4px !important;
+    z-index: 0 !important;
+}
+
+.ts-control:focus-within {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 2px rgba(142, 107, 191, 0.2) !important;
+}
+
+.ts-control input::placeholder{
+    font-size: var(--font-size-sm) !important;
+    color: var(--color-text) !important;
+    font-family: var(--font-main) !important;
+    opacity: 1 !important;
+}
+
+.ts-control .item {
+    background-color: var(--color-primary) !important;
+    color: var(--color-text-on-primary) !important;
+    border-radius: 6px;
+    padding: 4px 8px;
+    margin: 2px;
+    font-size: var(--font-size-sm) !important;
+}
+
+.ts-control .remove {
+    margin-left: 6px !important;
+    color: var(--color-text-on-primary) !important;
+}
+
+.ts-dropdown {
+    border-radius: 8px !important;
+    border: 1px solid #ddd !important;
+}
+
+.ts-dropdown .option:hover {
+    background-color: var(--color-primary) !important;
+    color: var(--color-text-on-primary) !important;
+}
+
+.ts-dropdown .active {
+    background-color: var(--color-primary) !important;
+    color: var(--color-text-on-primary) !important;
 }

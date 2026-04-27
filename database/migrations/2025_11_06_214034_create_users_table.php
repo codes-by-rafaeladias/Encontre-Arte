@@ -20,6 +20,12 @@ return new class extends Migration
             $table->enum('type', ['customer', 'artisan']);
             $table->text('bio')->nullable();
             $table->string('profile_image', 255)->nullable();
+            $table->string('country')->default('Brasil');
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
+            $table->string('whatsapp')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('slug', 200)->nullable()->unique();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

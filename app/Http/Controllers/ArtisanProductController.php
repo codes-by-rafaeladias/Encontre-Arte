@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Technique;
+use App\Models\Material;
 use Illuminate\Support\Facades\Auth;
 use App\Rules\ValidPrice;
 
@@ -19,7 +22,12 @@ class ArtisanProductController extends Controller
     }
 
     public function create(){
-        return view('artisan.create_product');
+
+        $categories = Category::orderBy('name')->get();
+        $techniques = Technique::orderBy('name')->get();
+        $materials = Material::orderBy('name')->get();
+
+        return view('artisan.create_product',compact('categories', 'techniques', 'materials'));
     }
 
     public function store(Request $request){
@@ -30,16 +38,27 @@ class ArtisanProductController extends Controller
             'name'        => 'required|string|max:200',
             'description' => 'nullable|string',
             'price'       => ['required', new ValidPrice],
-            'category'    => 'nullable|string|max:100',
+            'category_id' => 'required|exists:categories,id',
+            'technique_id' => 'required|exists:techniques,id',
             'image_url' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'status' => 'required|in:em_estoque,indisponivel,sob_encomenda',
+            'materials' => 'nullable|array',
+            'materials.*' => 'exists:materials,id',
         ],
         [
             'name.required' => 'O nome do produto é obrigatório.',
             'price.required' => 'O preço do produto é obrigatório.',
+            'category_id.required' => 'A categoria do produto é obrigatória',
+            'technique_id.required' => 'A técnica usada na produção é obrigatória',
+            'category_id.exists' => 'Selecione uma categoria válida',
+            'technique_id.exists' => 'Selecione uma técnica válida',
             'image_url.required' => 'A imagem do produto é obrigatória.',
             'image_url.image' => 'O arquivo deve ser uma imagem válida.',
             'image_url.mimes' => 'A imagem deve ser do tipo: jpg, jpeg, png, webp.',
             'image_url.max' => 'A imagem não pode exceder 2MB.',
+            'status.required' => 'O status é obrigatório',
+            'status.in' => 'Selecione um status válido',
+            'materials.*.exists' => 'Selecione materiais válidos',
         ]);
 
         if ($request->hasFile('image_url')) {
@@ -57,17 +76,24 @@ class ArtisanProductController extends Controller
             'name'        => $request->name,
             'description' => $request->description,
             'price' => str_replace(',', '.', $request->price),
-            'category'  => $request->category,
+            'category_id' => $request->category_id,
+            'technique_id' => $request->technique_id,
             'image_url' => $path,
+            'status' => $request->status,
         ]);
+        
+        $product->materials()->sync($request->input('materials', []));
 
-         return back()->with('success', 'Produto cadastrado com sucesso!');
+        return back()->with('success', 'Produto cadastrado com sucesso!');
     }
 
     public function showUpdateProductForm($id){
         $product = Product::findOrFail($id);
+        $categories = Category::orderBy('name')->get();
+        $techniques = Technique::orderBy('name')->get();
+        $materials = Material::orderBy('name')->get();
 
-        return view('artisan.update_product', compact('product'));
+        return view('artisan.update_product', compact('product', 'categories', 'techniques', 'materials'));
     }
 
     public function update(Request $request, $id){
@@ -79,12 +105,23 @@ class ArtisanProductController extends Controller
             'name'        => 'required|string|max:200',
             'description' => 'nullable|string',
             'price'       => ['required', new ValidPrice],
-            'category'    => 'nullable|string|max:100',
+            'category_id' => 'required|exists:categories,id',
+            'technique_id' => 'required|exists:techniques,id',
             'image_url' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'status' => 'required|in:em_estoque,indisponivel,sob_encomenda',
+            'materials' => 'nullable|array',
+            'materials.*' => 'exists:materials,id',
         ],
         [
             'name.required' => 'O nome do produto é obrigatório.',
             'price.required' => 'O preço do produto é obrigatório.',
+            'category_id.required' => 'A categoria do produto é obrigatória',
+            'technique_id.required' => 'A técnica usada na produção é obrigatória',
+            'category_id.exists' => 'Selecione uma categoria válida',
+            'technique_id.exists' => 'Selecione uma técnica válida',
+            'status.required' => 'O status é obrigatório',
+            'status.in' => 'Selecione um status válido',
+            'materials.*.exists' => 'Selecione materiais válidos',
         ]);
 
         if ($request->hasFile('image_url')) {
@@ -96,8 +133,12 @@ class ArtisanProductController extends Controller
             'name'        => $request->name,
             'description' => $request->description,
             'price' => str_replace(',', '.', $request->price),
-            'category'  => $request->category,
+            'category_id' => $request->category_id,
+            'technique_id' => $request->technique_id,
+            'status' => $request->status,
         ]);
+
+        $product->materials()->sync($request->input('materials', []));
 
         return back()->with('success', 'Produto atualizado com sucesso!');
     }

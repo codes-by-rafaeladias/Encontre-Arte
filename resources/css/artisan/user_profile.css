@@ -73,8 +73,8 @@ textarea {
     color: var(--color-text);
     outline: none;
     box-sizing: border-box;
-    min-height: 100px;
-    resize: vertical;
+    min-height: 80px;
+    resize: none;
 }
 
 textarea:focus{

@@ -90,7 +90,7 @@
             <label for="bio" class="input-label">
                 Conte a história do seu trabalho
             </label>
-            <textarea placeholder="Compartilhe como começou, suas inspirações e o que torna seu trabalho único..." name="bio" id="bio"></textarea>
+            <textarea placeholder="Compartilhe como começou, suas inspirações e o que torna seu trabalho único..." name="bio" id="bio">{{ old('bio', '') }}</textarea>
         </div>
             <button type="submit" class="btn btn-primary btn-largo">
                 Finalizar Cadastro
@@ -113,7 +113,7 @@ document.getElementById('profile_image').onchange = function(e) {
     const file = e.target.files[0];
     if (file) {
         const previewImage =  document.querySelector('#preview');
-        const profileAvatar = document.querySelector('.profile-avatar');;
+        const profileAvatar = document.querySelector('.profile-avatar');
         if(previewImage){
             previewImage.style.display = 'block';
             previewImage.src = URL.createObjectURL(file);

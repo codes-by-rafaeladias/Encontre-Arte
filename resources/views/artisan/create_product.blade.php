@@ -2,6 +2,7 @@
 
 @push('styles')
     @vite(['resources/css/artisan/user_profile.css', 'resources/css/artisan/create_product.css'])
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css">
 @endpush
 
 @section('title', 'Cadastro de Produto')
@@ -33,7 +34,8 @@
                 type="text" 
                 id="name" 
                 name="name"
-                class="input-text @error('price') input-error @enderror"
+                value="{{ old('name', '') }}",
+                class="input-text @error('name') input-error @enderror"
                 required
             >
         </div>
@@ -41,7 +43,7 @@
             <label for="description" class="input-label">
                 Descrição
             </label>
-            <textarea name="description" id="description"></textarea>
+            <textarea name="description" id="description" placeholder="Descreva seu produto: cores, tamanho e para que ele é ideal...">{{ old('description', '') }}</textarea>
         </div>
         <div class="input-group">
             <label for="price" class="input-label">
@@ -52,20 +54,66 @@
                 id="price" 
                 name="price"
                 placeholder="0,00"
-                class="input-text @error('name') input-error @enderror"
+                value="{{ old('price', '') }}",
+                class="input-text @error('price') input-error @enderror"
                 oninput="formatPrice(this)"
             >
         </div>
         <div class="input-group">
-            <label for="category" class="input-label">
-                Categoria 
+            <label class="input-label">Categoria
+                <span class="required">*</span>
             </label>
-            <input 
-                type="text" 
-                id="category" 
-                name="category"
-                class="input-text"
-            >
+            <div class="select-wrapper">
+            <select name="category_id" class="select-item @error('category_id') input-error @enderror">
+                <option value="">Selecione uma categoria de produto</option>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}"
+                        {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                        {{ $category->name }}
+                    </option>
+                @endforeach
+            </select>
+            </div>
+        </div>
+        <div class="input-group">
+            <label class="input-label">Técnica
+                <span class="required">*</span>
+            </label>
+            <div class="select-wrapper">
+            <select name="technique_id" class="select-item @error('technique_id') input-error @enderror">
+                <option value="">Selecione a técnica utilizada</option>
+                @foreach($techniques as $technique)
+                    <option value="{{ $technique->id }}"
+                        {{ old('technique_id') == $technique->id ? 'selected' : '' }}>
+                        {{ $technique->name }}
+                    </option>
+                @endforeach
+            </select>
+            </div>
+        </div>
+        <div class="input-group">
+            <label class="input-label">Materiais</label>
+            <select id="materials" name="materials[]" multiple>
+                @foreach($materials as $material)
+                    <option value="{{ $material->id }}"
+                        {{ collect(old('materials'))->contains($material->id) ? 'selected' : '' }}>
+                        {{ $material->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <div class="input-group">
+            <label class="input-label">Status
+                <span class="required">*</span>
+            </label>
+            <div class="select-wrapper">
+            <select name="status" class="select-item @error('status') input-error @enderror">
+                <option value="">Selecione o status do produto</option>
+                <option value="em_estoque" {{ old('status') == 'em_estoque' ? 'selected' : '' }}>Em estoque</option>
+                <option value="indisponivel" {{ old('status') == 'indisponivel' ? 'selected' : '' }}>Indisponível</option>
+                <option value="sob_encomenda" {{ old('status') == 'sob_encomenda' ? 'selected' : '' }}>Sob encomenda</option>
+            </select>
+            </div>
         </div>
             <button type="submit" class="btn btn-primary btn-largo">
                 Cadastrar
@@ -83,40 +131,59 @@
 </div>
 @endsection
 @push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
 <script>
-document.getElementById('image_url').onchange = function(e) {
-    const file = e.target.files[0];
-    if (file) {
-        const previewImage =  document.querySelector('#image_preview');
-        const container = document.querySelector('.upload-text');
-        
-        previewImage.src = URL.createObjectURL(file);
-        previewImage.style.display = 'block';
-        container.style.display = 'none';
-    }
-};
+document.addEventListener("DOMContentLoaded", function() {
 
-function formatPrice(input) {
-    let value = input.value.replace(/\D/g, ""); 
-    value = (value / 100).toFixed(2) + "";     
+    // preview imagem
+    document.getElementById('image_url').onchange = function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const previewImage = document.querySelector('#image_preview');
+            const container = document.querySelector('.upload-text');
+            
+            previewImage.src = URL.createObjectURL(file);
+            previewImage.style.display = 'block';
+            container.style.display = 'none';
+        }
+    };
 
-    value = value.replace(".", ",");            
+    // formatar preço
+    window.formatPrice = function(input) {
+        let value = input.value.replace(/\D/g, ""); 
+        value = (value / 100).toFixed(2) + "";     
+        value = value.replace(".", ",");            
+        input.value = value;
+    };
 
-    input.value = value;
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    const inputs = document.querySelectorAll(".input-text");
-
-    inputs.forEach(input => {
+    // limpar erro ao digitar
+    document.querySelectorAll(".input-text").forEach(input => {
         input.addEventListener("input", () => {
-
             input.classList.remove("input-error");
-
             const errorBox = document.querySelector(".form-error-box");
             if (errorBox) errorBox.style.display = "none";
         });
     });
+
+    document.querySelectorAll(".select-item").forEach(selector => {
+        selector.addEventListener("input", () => {
+            selector.classList.remove("input-error");
+            const errorBox = document.querySelector(".form-error-box");
+            if (errorBox) errorBox.style.display = "none";
+        });
+    });
+
+    const el = document.querySelector("#materials");
+
+    if (el && !el.tomselect) {
+        new TomSelect(el, {
+            plugins: ['remove_button'],
+            create: false,
+            maxItems: 5,
+            placeholder: "Selecione os materiais"
+        });
+    }
+
 });
 </script>
 @endpush
