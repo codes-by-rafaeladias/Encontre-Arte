@@ -19,8 +19,9 @@ class Product extends Model
         'slug',
         'description',
         'price',
-        'category',
         'image_url',
+        'category_id',
+        'technique_id',
         'status',
     ];
 
@@ -56,12 +57,17 @@ class Product extends Model
 
     public function materials()
     {
-        return $this->belongsToMany(Material::class);
+        return $this->belongsToMany(Material::class, 'product_material');
     }
     
-    public function techniques()
+    public function technique()
     {
-        return $this->belongsToMany(Technique::class);
+        return $this->belongsTo(Technique::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     /**
