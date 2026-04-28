@@ -20,18 +20,27 @@
 
         <div class="product-info">
 
+            <div class="product-header">
+
             <h1 class="product-title">{{ $product->name }}</h1>
+
+            <div class="favorite-icon">
+            <form action="{{ route('customer.favorites.create', $product->slug) }}" method="POST">
+                @csrf
+                <button type="submit" class="btn-favorite">
+                    <i class="{{ $isFavorited ? 'fa-solid' : 'fa-regular' }} fa-heart"></i>
+                </button>
+            </form>
+            </div>
+            </div>
 
             <p class="product-price">
                 R$ {{ number_format($product->price, 2, ',', '.') }}
             </p>
 
-            <p class="product-description">{{ $product->description }}</p>
-
-            <p class="seller-label">Vendido por</p>
-            <a href="{{ route('customer.artisan.profile', $product->artisan->slug) }}" class="seller-name">
-                {{ $product->artisan->business_name ?? $product->artisan->name }}
-            </a>
+            <span class="status-badge {{ $product->status }}">
+                {{ strtoupper(str_replace('_', ' ', $product->status)) }}
+            </span>
 
             @php
                 $average = $product->averageRating();
@@ -57,19 +66,49 @@
             </div>
 
             <div class="product-buttons">
-
-                <form action="{{ route('customer.favorites.create', $product->slug) }}" method="POST">
-                    @csrf
-                    <button class="btn btn-secondary btn-medio">
-                        {{ $isFavorited ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos' }}
-                    </button>
-                </form>
-
-                <button type="button" class="btn btn-primary btn-medio" id="openReviewPopup">
-                    {{ $userReview ? 'Editar Avaliação' : 'Avaliar Produto' }}
+                @if($product->artisan->whatsapp || $product->artisan->instagram)
+                <div class="contact-dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle">
+                        Contatar artesão
+                    <i class="fa-solid fa-chevron-down"></i>
                 </button>
 
+                <div class="dropdown-menu-contact">
+                    @if($product->artisan->whatsapp)
+                    <a href="https://wa.me/{{ preg_replace('/\D/', '', $product->artisan->whatsapp) }}" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    </a>
+                    @endif
+
+                    @if($product->artisan->instagram)
+                    <a href="https://instagram.com/{{ $product->artisan->instagram }}" target="_blank">
+                        <i class="fa-brands fa-instagram"></i> Instagram
+                    </a>
+                    @endif
+                </div>
+                </div>
+                @else
+                <button class="btn btn-primary btn-disabled" disabled>
+                    Contato indisponível
+                </button>
+                @endif
+                <button type="button" class="btn btn-secondary" id="openReviewPopup">
+                    {{ $userReview ? 'Editar Avaliação' : 'Avaliar Produto' }}
+                 </button>
             </div>
+            <hr class="profile-divider">
+            @if($product->description)
+            <p class="product-description">{{ $product->description }}</p>
+            @endif
+            <p class="product-technique"><strong>Técnica:</strong> {{ $product->technique->name }}</p>
+            @if($product->materials->isNotEmpty())
+            <p class="product-technique"><strong>Materiais:</strong> {{ $product->materials->pluck('name')->join(', ') }}</p>
+            @endif
+            <p class="seller-label">Vendido por
+            <a href="{{ route('customer.artisan.profile', $product->artisan->slug) }}" class="seller-name">
+                {{ $product->artisan->business_name ?? $product->artisan->name }}
+            </a>
+            </p>
             <form id="reviewRealForm" method="POST" action="{{ $userReview ? route('customer.review.update', $userReview->id) : route('customer.review.create', $product->id) }}">
     @csrf
     @if($userReview)
@@ -182,6 +221,20 @@ document.addEventListener("DOMContentLoaded", function(){
         document.getElementById("reviewRealForm").submit();
     }
 
+    const dropdown = document.querySelector(".contact-dropdown");
+    const toggle = document.querySelector(".dropdown-toggle");
+
+    if (dropdown && toggle) {
+        toggle.addEventListener("click", function() {
+        dropdown.classList.toggle("active");
+    });
+
+        document.addEventListener("click", function(e) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove("active");
+            }
+        });
+    } 
 });
 </script>
 @endpush

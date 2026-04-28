@@ -114,10 +114,16 @@ class ArtisanProfileController extends Controller
             
             $user->whatsapp = '+' . $number;
         }
+        else{
+            $user->whatsapp = $request->whatsapp;
+        }
 
         if ($request->filled('instagram')) {
             $user->instagram = str_replace(['https://instagram.com/', 'https://www.instagram.com/', 'www.instagram.com/'], '', $request->instagram);
             $user->instagram = ltrim($user->instagram, '@');
+        }
+        else{
+            $user->instagram = $request->instagram;
         }
 
         if ($request->hasFile('profile_image')) {
