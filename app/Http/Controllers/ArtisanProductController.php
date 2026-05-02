@@ -84,7 +84,7 @@ class ArtisanProductController extends Controller
         
         $product->materials()->sync($request->input('materials', []));
 
-        return back()->with('success', 'Produto cadastrado com sucesso!');
+        return redirect()->route('artisan.products.index')->with('success', 'Produto cadastrado com sucesso!');
     }
 
     public function showUpdateProductForm($id){
@@ -140,7 +140,7 @@ class ArtisanProductController extends Controller
 
         $product->materials()->sync($request->input('materials', []));
 
-        return back()->with('success', 'Produto atualizado com sucesso!');
+        return redirect()->route('artisan.products.index')->with('success', 'Produto atualizado com sucesso!');
     }
 
     public function destroy($id)

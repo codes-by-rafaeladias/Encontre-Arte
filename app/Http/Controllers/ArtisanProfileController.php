@@ -72,7 +72,7 @@ class ArtisanProfileController extends Controller
 
         $user->save();
 
-       return redirect()->route('artisan.home')->with('success', 'Cadastro feito com sucesso.');
+       return redirect()->route('artisan.home');
     }
 
     public function update(Request $request)
@@ -144,8 +144,8 @@ class ArtisanProfileController extends Controller
         }
 
         $user->save();
-
-       return back()->with('success', 'Perfil atualizado com sucesso!');
+        
+        return redirect()->route('artisan.home');
 
     }
 

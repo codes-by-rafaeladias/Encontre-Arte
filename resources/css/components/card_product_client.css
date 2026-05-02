@@ -58,10 +58,12 @@
 .favorite-button i {
     font-size: 20px;
     color: var(--color-secondary);
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .favorite-button i.favorited {
     color: var(--color-secondary);
+    transform: scale(1.2);
 }
 
 .card-link:hover{

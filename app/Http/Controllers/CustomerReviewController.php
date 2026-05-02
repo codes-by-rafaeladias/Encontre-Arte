@@ -25,7 +25,7 @@ class CustomerReviewController extends Controller
                         ->firstOrFail();
 
         $review->delete();
-
-        return back()->with('success', 'Avaliação excluída com sucesso!');
+        
+        return redirect()->route('customer.reviews.index')->with('success', 'Avaliação excluída com sucesso!');
     }
 }

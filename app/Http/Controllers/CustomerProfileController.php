@@ -46,7 +46,7 @@ class CustomerProfileController extends Controller
 
         $user->save();
 
-       return redirect()->route('customer.home')->with('success', 'Cadastro feito com sucesso.');
+       return redirect()->route('customer.home');
     }
 
     public function update(Request $request)
@@ -88,7 +88,7 @@ class CustomerProfileController extends Controller
 
         $user->save();
 
-       return back()->with('success', 'Perfil atualizado com sucesso!');
+       return redirect()->route('customer.home')->with('success', 'Perfil atualizado com sucesso!');
 
     }
 

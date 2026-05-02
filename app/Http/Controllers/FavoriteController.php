@@ -15,20 +15,18 @@ class FavoriteController extends Controller
         $product = Product::where('slug', $productSlug)->firstOrFail();
 
         $favorite = Favorite::where('customer_id', $user->id)
-                            ->where('product_id', $product->id)
-                            ->first();
+        ->where('product_id', $product->id)->first();
 
         if ($favorite) {
             $favorite->delete();
-            return back()->with('success', 'Produto removido dos favoritos');
+        } else {
+            Favorite::create([
+                'customer_id' => $user->id,
+                'product_id' => $product->id,
+                ]);
         }
-
-        Favorite::create([
-            'customer_id' => $user->id,
-            'product_id' => $product->id,
-        ]);
-
-        return back()->with('success', 'Produto adicionado aos favoritos');
+        
+        return back();
     }
 
     public function listFavorites()
