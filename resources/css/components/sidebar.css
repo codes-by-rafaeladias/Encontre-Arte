@@ -1,0 +1,128 @@
+.sidebar {
+    width: 250px;
+    height: auto;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--color-primary);
+    color: var(--color-text-on-primary);
+    gap: 6px;
+    padding: 16px;
+    font-family: var(--font-main);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.logo-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.sidebar-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 10px 14px;
+    border-radius: 10px;
+
+    text-decoration: none;
+    color: #eee;
+
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: var(--color-text-on-primary);
+    text-decoration: none;
+}
+
+.menu-item:active {
+    transform: scale(0.98);
+}
+
+.menu-item.active {
+    color: var(--color-primary);
+    background: var(--color-text-on-primary);
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.icon {
+    width: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divider {
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.copyright {
+    font-size: 12px;
+    opacity: 0.8;
+    text-align: center;
+}
+
+#logout-form {
+    display: none;
+    margin: 0;
+}
+
+.sidebar.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        height: 100vh;
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+}

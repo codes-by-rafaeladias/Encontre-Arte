@@ -42,14 +42,6 @@ p, span {
     font-size: var(--font-size-md);
 }
 
-body.app-body { 
-  font-family: var(--font-main);
-  background-color: var(--color-background);
-  color: var(--color-text);
-  padding-top: 50px;
-  padding-bottom: 30px;
-}
-
 body.auth-body { 
   font-family: var(--font-main);
   background-color: var(--color-background);
