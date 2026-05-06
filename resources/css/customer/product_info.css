@@ -1,17 +1,17 @@
 .product-page {
     display: flex;
     justify-content: center;
-    padding: 2.5rem 1rem;
+    padding: 1.5rem 1rem;
 }
 
 .product-card {
     display: flex;
     gap: 40px;
     background: var(--color-text-on-primary);
-    padding: 2.5rem;
+    padding: 2rem;
     border-radius: 20px;
     box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-    max-width: 800px;
+    max-width: 600px;
     position: relative;
 }
 

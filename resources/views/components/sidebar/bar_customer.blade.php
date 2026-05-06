@@ -1,5 +1,5 @@
 @vite(['resources/css/app.css', 'resources/css/components/sidebar.css'])
-<aside class="sidebar hidden">
+<aside class="sidebar">
     <div class="sidebar-header">
         <div class="logo">
             <img src="{{ asset('images/logo-icon.png') }}" class="logo-img">
@@ -53,23 +53,15 @@
             <span>Perfil</span>
         </a>
 
-        <a href="{{ route('auth.logout') }}" class="menu-item logout"
-           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i class="fa-solid fa-arrow-right-from-bracket icon"></i>
+        <a href="{{ route('auth.logout') }}"
+           class="menu-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="fa-solid fa-right-from-bracket"></i> 
             <span>Sair</span>
         </a>
-
         <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" hidden>
             @csrf
         </form>
 
     </nav>
-
-    <div class="sidebar-footer">
-
-         <div class="divider"></div>
-
-        <p class="copyright">© 2026 Encontre Arte</p>
-    </div>
 </aside>
 

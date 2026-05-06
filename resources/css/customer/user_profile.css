@@ -16,8 +16,8 @@ form{
     border-radius: var(--border-radius);
     flex-direction: column;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 420px;
     width: 100%;
-    max-width: 400px;
     gap: 1.2rem;
 }
 
@@ -41,46 +41,14 @@ form{
     object-fit: cover;
 }
 
-.d-none {
-    display: none !important;
-}
-
 .btn-secondary.btn-medio{
     margin-bottom: 0.5rem !important;
 }
 
-.group-fields{
-    display: flex;
-    width: 100%;
-    gap: 1.2rem;
-    max-width: 320px;
+.d-none {
+    display: none !important;
 }
 
-textarea {
-    font-weight: 500;
-    font-family: inherit; 
-    width: 100%;
-    max-width: 320px;
-    padding: 12px;
-    background-color: var(--color-text-on-primary);
-    border: 1px solid var(--color-text);
-    border-radius: var(--border-radius);
-    font-size: var(--font-size-sm);
-    color: var(--color-text);
-    outline: none;
-    box-sizing: border-box;
-    min-height: 100px;
-    resize: vertical;
-    text-align: left;
-    line-height: 1.5;
-}
-
-textarea:focus{
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 2px rgba(142, 107, 191, 0.2);
-}
-
-textarea::placeholder,
-.input-text::placeholder {
-    color: #999 !important;
+.input-group{
+    font-family: var(--font-main);
 }

@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @push('styles')
-    @vite(['resources/css/artisan/user_profile.css'])
+    @vite(['resources/css/customer/user_profile.css'])
 @endpush
 
 @section('title', 'Cadastro | Encontre Arte')
@@ -20,7 +20,7 @@
         <button 
         type="button"
         onclick="document.getElementById('profile_image').click()"
-        class="btn btn-primary btn-medio">
+        class="btn btn-secondary btn-medio">
             Enviar Imagem
         </button>
         <input type="file" id="profile_image" name="profile_image" class="d-none" accept="image/png, image/jpeg, image/jpg, image/webp">

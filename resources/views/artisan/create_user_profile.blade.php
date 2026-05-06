@@ -20,7 +20,7 @@
         <button 
         type="button"
         onclick="document.getElementById('profile_image').click()"
-        class="btn btn-primary btn-medio">
+        class="btn btn-secondary btn-medio">
             Enviar Imagem
         </button>
         <input type="file" id="profile_image" name="profile_image" class="d-none" accept="image/png, image/jpeg, image/jpg, image/webp">
@@ -36,6 +36,7 @@
                 class="input-text @error('business_name') input-error @enderror"
             >
         </div>
+        <div class="group-fields">
         <div class="input-group">
             <label for="state" class="input-label">
                 Estado <span class="required">*</span>
@@ -62,6 +63,8 @@
                 required
             >
         </div>
+        </div>
+        <div class="group-fields">
         <div class="input-group">
             <label for="whatsapp" class="input-label">
                 Whatsapp
@@ -70,6 +73,7 @@
                 type="text" 
                 id="whatsapp" 
                 name="whatsapp"
+                placeholder="77999999999"
                 value="{{ old('whatsapp') }}"
                 class="input-text @error('whatsapp') input-error @enderror"
             >
@@ -82,13 +86,15 @@
                 type="text" 
                 id="instagram" 
                 name="instagram"
+                placeholder="@seunome"
                 value="{{ old('instagram') }}"
                 class="input-text @error('instagram') input-error @enderror"
             >
         </div>
+        </div>
         <div class="input-group">
             <label for="bio" class="input-label">
-                Conte a história do seu trabalho
+                Sobre o trabalho
             </label>
             <textarea placeholder="Compartilhe como começou, suas inspirações e o que torna seu trabalho único..." name="bio" id="bio">{{ old('bio', '') }}</textarea>
         </div>

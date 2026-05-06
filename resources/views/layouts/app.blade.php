@@ -17,7 +17,14 @@
 
     <div class="app-container">
 
-        @include('components.sidebar.bar_customer')
+        @auth
+            @if(auth()->user()->type === 'customer')
+                @include('components.sidebar.bar_customer')
+            @elseif(auth()->user()->type === 'artisan')
+                @include('components.sidebar.bar_artisan')
+            @endif
+        @endauth
+
         <div id="overlay" class="overlay"></div>
 
         <div class="main-content">

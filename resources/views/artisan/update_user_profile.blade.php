@@ -26,7 +26,7 @@
         <button 
         type="button"
         onclick="document.getElementById('profile_image').click()"
-        class="btn btn-primary btn-medio">
+        class="btn btn-secondary btn-medio">
             Alterar Imagem
         </button>
         <input type="file" id="profile_image" name="profile_image" class="d-none" accept="image/png, image/jpeg, image/jpg, image/webp">
@@ -55,6 +55,7 @@
                 class="input-text"
             >
         </div>
+        <div class="group-fields">
         <div class="input-group">
             <label for="state" class="input-label">
                 Estado <span class="required">*</span>
@@ -81,6 +82,8 @@
                 required
             >
         </div>
+        </div>
+        <div class="group-fields">
         <div class="input-group">
             <label for="whatsapp" class="input-label">
                 Whatsapp
@@ -89,6 +92,7 @@
                 type="text" 
                 id="whatsapp" 
                 name="whatsapp"
+                placeholder="77999999999"
                 value="{{ old('whatsapp', $user->whatsapp ?? '') }}"
                 class="input-text @error('whatsapp') input-error @enderror"
             >
@@ -101,9 +105,11 @@
                 type="text" 
                 id="instagram" 
                 name="instagram"
+                placeholder="@seunome"
                 value="{{ old('instagram', $user->instagram ?? '') }}"
                 class="input-text @error('instagram') input-error @enderror"
             >
+        </div>
         </div>
         <div class="input-group">
             <label for="bio" class="input-label">
@@ -132,7 +138,7 @@ document.getElementById('profile_image').onchange = function(e) {
     const file = e.target.files[0];
     if (file) {
         const previewImage =  document.querySelector('#preview');
-        const profileAvatar = document.querySelector('.profile-avatar');;
+        const profileAvatar = document.querySelector('.profile-avatar');
         if(previewImage){
             previewImage.src = URL.createObjectURL(file);
         }
