@@ -1,6 +1,6 @@
 /* Título da página */
 .page-title {
-    font-size: var(--font-size-lg) !important;
+    font-size: var(--font-size-xl) !important;
     font-weight: 600 !important;
     color: var(--color-text) !important;
 }

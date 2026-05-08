@@ -7,6 +7,21 @@
     color: var(--color-text);
 }
 
+.no-items h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+
+    color: var(--color-text);
+
+    margin-bottom: 8px;
+}
+
+.no-items p {
+    font-size: 15px;
+    color: var(--color-text);
+    line-height: 1.5;
+}
+
 .star-active {
     color: #FFD43B !important;
 }
@@ -33,11 +48,9 @@
 
 .review-list {
     align-items: center;
-    justify-content: center;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     width: 100%;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin: 2rem auto;
 }

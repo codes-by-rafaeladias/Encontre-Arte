@@ -11,6 +11,7 @@
     <h2 class="title">Meus Produtos</h2>
     <form action="{{ route('artisan.products.create') }}" method="GET">
         <button type="submit" class="btn btn-primary btn-medio">
+            <i class="fa-solid fa-plus"></i>
             Novo Produto
         </button>
     </form>
@@ -18,7 +19,8 @@
 
     @if($products->isEmpty())
         <div class="no-items">
-            <p>Você ainda não cadastrou nenhum produto.</p>
+            <h3>Nenhum produto cadastrado</h3>
+            <p>Você ainda não cadastrou nenhum produto. Clique no botão acima para adicionar o primeiro.</p>
         </div>
     @else
 

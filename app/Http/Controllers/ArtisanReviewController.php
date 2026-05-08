@@ -17,7 +17,11 @@ class ArtisanReviewController extends Controller
             ->whereIn('product_id', $productIds)
             ->latest()
             ->paginate(10);
+        
+        $averageRating = $artisan->averageRating();
+        $totalReviews = $artisan->totalReviews();
+        $bestProduct = $artisan->bestRatedProduct();
 
-        return view('artisan.reviews', compact('reviews'));
+        return view('artisan.reviews', compact('reviews', 'averageRating', 'totalReviews', 'bestProduct'));
     }
 }

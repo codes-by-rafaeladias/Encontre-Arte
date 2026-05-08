@@ -11,8 +11,20 @@
 <h2 class="title">Avaliações Recebidas</h2>
 
 @if($reviews->isEmpty())
-    <p class="no-items">Nenhuma avaliação recebida ainda.</p>
+    <div class="no-items">
+            <h3>Nenhuma avaliação recebida ainda</h3>
+            <p>Você ainda não recebeu avaliações. As opiniões dos clientes aparecerão aqui após as primeiras compras.</p>
+    </div>
 @else
+
+@if($totalReviews >= 10)
+
+    <x-reviews_kpis
+        :media="$averageRating"
+        :quantidade="$totalReviews"
+        :melhor_produto="$bestProduct"
+    />
+@endif
 
 <div class="review-list">
     @foreach ($reviews as $review)

@@ -41,8 +41,8 @@
 
 .select-item{
     padding: 0 12px;
-    width: 300px;
-    height: 40px;
+    width: 320px;
+    height: 44px;
     background-color: var(--color-text-on-primary);
     border: 1px solid var(--color-text);
     border-radius: var(--border-radius);
@@ -83,8 +83,8 @@
 
 .ts-control {
     padding: 12px !important;
-    width: 300px !important;
-    min-height: 40px !important;
+    width: 320px !important;
+    min-height: 44px !important;
     background-color: var(--color-text-on-primary) !important;
     border: 1px solid var(--color-text) !important;
     border-radius: var(--border-radius) !important;
@@ -137,4 +137,8 @@
 .ts-dropdown .active {
     background-color: var(--color-primary) !important;
     color: var(--color-text-on-primary) !important;
+}
+
+.form-error-box {
+    margin: 0rem 1rem 0 1rem !important;
 }

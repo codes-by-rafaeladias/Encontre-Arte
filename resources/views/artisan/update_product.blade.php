@@ -25,7 +25,7 @@
             <button 
             type="button"
             onclick="document.getElementById('image_url').click()"
-            class="btn btn-primary btn-medio">
+            class="btn btn-secondary btn-medio">
             Alterar Imagem
             </button>
             <input type="file" id="image_url" name="image_url" class="d-none" accept="image/png, image/jpeg, image/jpg, image/webp">

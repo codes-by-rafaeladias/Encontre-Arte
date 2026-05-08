@@ -71,6 +71,7 @@ body.auth-body {
 .btn {
   box-sizing: border-box;
   display: inline-flex;
+  gap: 10px;
   justify-content: center;
   align-items: center;
   font-family: var(--font-main);
@@ -208,7 +209,7 @@ a:hover {
 }
 
 .form-error-box {
-    max-width: 300px;
+    max-width: 320px;
     width: 100%;
     margin: 1rem 1rem 0 1rem;
     display: flex;
@@ -258,18 +259,20 @@ a:hover {
 }
 
 .dashboard-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  padding: 2rem;
-  margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
 }
 
 .no-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 2rem;
+    padding: 10px;
 }
 
 .page-title {

@@ -7,10 +7,24 @@
 }
 
 .title {
-    margin: 0;
     font-size: var(--font-size-xl);
     font-weight: 600;
     color: var(--color-text);
+}
+
+h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+
+    color: var(--color-text);
+
+    margin-bottom: 8px;
+}
+
+p {
+    font-size: 15px;
+    color: var(--color-text);
+    line-height: 1.5;
 }
 
 @media (max-width: 768px) {

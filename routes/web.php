@@ -12,6 +12,7 @@ use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\CustomerReviewController;
 use App\Http\Controllers\ArtisanReviewController;
 use App\Http\Controllers\CustomerProfileController;
+use App\Http\Controllers\ArtisanHomeController;
 
 //rota inicial do sistema
 Route::get('/', [AuthController::class, 'showLogin'])->name('login');
@@ -44,8 +45,7 @@ Route::prefix('artesao')->name('artisan.')->middleware(['auth', 'artisan'])->gro
     Route::get('/perfil', [ArtisanProfileController::class, 'showCreateProfileForm'])->name('profile.index');
     Route::patch('/perfil', [ArtisanProfileController::class, 'create'])
     ->name('profile.create');
-    Route::get('/', function () {
-    return view('home.artisan');})
+    Route::get('/', [ArtisanHomeController::class,'home'])
     ->name('home');
     Route::get('/perfil/editar', [ArtisanProfileController::class, 'showUpdateProfileForm'])->name('profile.data');
     Route::patch('/perfil/editar', [ArtisanProfileController::class, 'update'])->name('profile.update');

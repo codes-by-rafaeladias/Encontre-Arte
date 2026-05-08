@@ -1,6 +1,6 @@
 /* Título da página */
 .page-title {
-    font-size: var(--font-size-lg) !important;
+    font-size: var(--font-size-xl) !important;
     font-weight: 600 !important;
     color: var(--color-text) !important;
 }
@@ -11,7 +11,7 @@ form{
     justify-content: center;
     align-items: center;
     padding: 30px;
-    margin: 3rem auto;
+    margin: 2.5rem auto 3rem;
     background-color: var(--color-text-on-primary);
     border-radius: var(--border-radius);
     flex-direction: column;
