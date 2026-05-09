@@ -12,13 +12,15 @@
 
     <div class="product-card">
 
+        <div class="product-row">
+
         <div class="product-image-box">
             <img src="{{ asset('storage/' . $product->image_url) }}" 
                  alt="{{ $product->name }}" 
                  class="product-image">
         </div>
-
-        <div class="product-info">
+            
+         <div class="product-info flex">
 
             <div class="product-header">
 
@@ -96,6 +98,9 @@
                     {{ $userReview ? 'Editar Avaliação' : 'Avaliar Produto' }}
                  </button>
             </div>
+            </div>
+            </div>
+            <div class="product-info">
             <hr class="profile-divider">
             @if($product->description)
             <p class="product-description">{{ $product->description }}</p>
@@ -109,6 +114,7 @@
                 {{ $product->artisan->business_name ?? $product->artisan->name }}
             </a>
             </p>
+            </div>
             <form id="reviewRealForm" method="POST" action="{{ $userReview ? route('customer.review.update', $userReview->id) : route('customer.review.create', $product->id) }}">
     @csrf
     @if($userReview)
@@ -118,8 +124,6 @@
     <input type="hidden" name="rating" id="ratingField">
     <input type="hidden" name="comment" id="commentField">
 </form>
-
-        </div>
 
     </div>
 

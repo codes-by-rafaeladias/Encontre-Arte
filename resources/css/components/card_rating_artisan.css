@@ -7,7 +7,6 @@
     overflow: hidden;
     border: 1px solid #ddd;
     max-width: 640px;
-    min-height: 220px;
     width: 100%;
     gap: 0;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -39,12 +38,11 @@
 .avaliacao-conteudo {
   display: flex;
   flex-direction: column;
-  gap: 6px;
   padding: 18px;
 }
 
 .avaliacao-produto {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
   font-weight: 600;
   color: var(--color-primary);
   margin-bottom: 0;
@@ -53,9 +51,12 @@
 .avaliacao-usuario {
   font-size: var(--font-size-md);
   color: var(--color-text);
+  margin-top: 12px;
+  margin-bottom: 0;
 }
 
 .avaliacao-estrelas {
+  margin-top: 12px;
   display: flex;
   gap: 0.25rem;
   font-size: var(--font-size-md);
@@ -67,6 +68,7 @@
 }
 
 .avaliacao-texto {
+  margin-top: 12px;
   font-size: var(--font-size-md);
   color: var(--color-text);
   line-height: 1.5;
@@ -76,27 +78,29 @@
 @media (max-width: 768px) {
 
     .avaliacao-card {
+
         grid-template-columns: 1fr;
 
-        max-width: 100%;
+        max-width: 320px;
+
         max-height: none;
     }
 
     .avaliacao-imagem {
-        height: 220px;
+        height: 180px;
     }
 
     .avaliacao-conteudo {
-        padding: 16px;
-    }
-
-    .avaliacao-produto {
-        font-size: var(--font-size-md);
+        padding: 4px 16px 16px;
     }
 
     .avaliacao-texto {
         font-size: var(--font-size-sm);
         line-height: 1.4;
+    }
+
+    .avaliacao-botoes {
+        justify-content: center;
     }
 
 }

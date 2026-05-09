@@ -11,6 +11,44 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 8px;
+    margin-top: 2rem;
+}
+
+.dashboard-grid{
+    margin-top: 2rem;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 3rem 0;
+    text-align: center;
+    gap: 1rem;
+    background: var(--color-text-on-primary);
+    padding: 3rem 2rem;
+    border-radius: 18px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.empty-state h3 {
+    margin: 0;
+
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+}
+
+.empty-state p {
+    max-width: 420px;
+
+    margin: 0;
+
+    color: #666;
+
+    line-height: 1.5;
+}
+
+.empty-state a:hover{
+    text-decoration: none;
+    color: var(--color-text-on-primary);
 }

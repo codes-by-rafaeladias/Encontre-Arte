@@ -8,11 +8,15 @@
 
 @section('content')
 <div class="title-action">
-    <h2 class="title">Favoritos</h2>
+    <h2 class="title">Produtos Favoritos</h2>
     
     @if($favoriteProducts->isEmpty())
-        <div class="no-items">
-            <p>Você ainda não favoritou nenhum produto.</p>
+        <div class="empty-state">
+            <h3>Nenhum produto favoritado</h3>
+            <p> Você ainda não adicionou produtos aos favoritos. Explore novas criações e salve as que mais gostar.</p>
+            <a href="{{ route('customer.products.index') }}" class="btn btn-primary btn-medio">
+                Explorar Produtos
+            </a>
         </div>
     @else
 

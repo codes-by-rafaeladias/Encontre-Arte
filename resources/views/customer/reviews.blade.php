@@ -11,7 +11,10 @@
 <h2 class="title">Minhas Avaliações</h2>
 
 @if($reviews->isEmpty())
-    <p class="no-items">Você ainda não avaliou nenhum produto.</p>
+    <div class="no-items">
+            <h3>Você ainda não avaliou nenhum produto</h3>
+            <p>Suas avaliações ajudam os artesãos a evoluírem, incentivam a produção artesanal e auxiliam outros clientes.</p>
+    </div>
 @else
 
 <div class="review-list">
