@@ -12,6 +12,7 @@
             placeholder="Buscar produtos..."
             :value="$search"
         />
+        <x-search_filters_product/>
     </form>
 
     @if($products->isEmpty() && !$search)
@@ -22,7 +23,7 @@
 
     @if ($products->isEmpty())
     <div class="no-items">
-        <p>Nenhum produto encontrado para: <strong>{{ $search }}</strong></p>
+        <p>Nenhum produto encontrado para a pesquisa realizada.</p>
     </div>
     @endif
 

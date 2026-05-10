@@ -10,24 +10,64 @@ class CustomerProductController extends Controller
 {
     public function listAllProducts(Request $request)
     {
-
         $search = $request->input('search');
-        
-        $query = Product::query();
-        
+        $searchType = $request->input('search_type', 'product');
+
+        $query = Product::query()
+        ->with([
+            'artisan',
+            'category',
+            'materials',
+            'technique'
+        ]);
+
         if ($search) {
-            $query->where('name', 'LIKE', '%' . $search . '%');
+            
+            match ($searchType) {
+                'product' => $query->where(
+                    'name',
+                    'LIKE',
+                    "%{$search}%"
+                    ),
+
+                'artisan' => $query->whereHas('artisan', function ($q) use ($search) {
+                    $q->where('name', 'LIKE', "%{$search}%")->orWhere('business_name', 'LIKE', "%{$search}%");
+                    }),
+
+                'category' => $query->whereHas('category', function ($q) use ($search) {
+                    $q->where('name', 'LIKE', "%{$search}%");
+                    }),
+                    
+                'technique' => $query->whereHas('technique', function ($q) use ($search) {
+                    $q->where('name', 'LIKE', "%{$search}%");
+                    }),
+
+                'material' => $query->whereHas('materials', function ($q) use ($search) {
+                    $q->where('name', 'LIKE', "%{$search}%");
+                    }),
+
+                'location' => $query->whereHas('artisan', function ($q) use ($search) {
+                    $q->where('city', 'LIKE', "%{$search}%")->orWhere('state', 'LIKE', "%{$search}%");
+                    }),
+
+                default => null
+            };
         }
 
-         $products = $query->latest()->paginate(9);
+    $products = $query->latest()->paginate(9);
 
-         $favoriteIds = auth()->user()
+    $favoriteIds = auth()->user()
         ->favoriteProducts()
         ->pluck('product_id')
         ->toArray();
-        
-        return view('customer.products', compact('products', 'favoriteIds', 'search'));
-    }
+
+    return view('customer.products', compact(
+        'products',
+        'favoriteIds',
+        'search',
+        'searchType'
+    ));
+}
 
     public function showProduct($slug)
     {

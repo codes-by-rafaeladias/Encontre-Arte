@@ -31,10 +31,30 @@
     font-size: var(--font-size-md);
     color: var(--color-text);
     background: transparent;
+    padding-right: 45px;
 }
 
 .search-input-field::placeholder {
     color: var(--color-text);
+}
+
+.clear-search-btn {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-size: 16px;
+}
+
+.clear-search-btn:hover {
+    color: #000;
 }
 
 @media (max-width: 768px) {

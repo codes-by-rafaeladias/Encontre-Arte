@@ -51,23 +51,6 @@ body.auth-body {
   padding: 0;
 }
 
-.footer {
-  background-color: var(--color-primary);
-  color: var(--color-text-on-primary);
-  height: 30px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-family: var(--font-main);
-  font-size: var(--font-size-md);
-  font-weight: 500;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-}
-
 .btn {
   box-sizing: border-box;
   display: inline-flex;

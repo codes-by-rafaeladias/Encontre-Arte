@@ -23,9 +23,8 @@
 
         <a href="{{ route('customer.artisans.index') }}"
            class="menu-item {{ request()->routeIs('customer.artisans.*') ? 'active' : '' }}">
-            <span class="icon">
-                <i class="fa-solid fa-palette"></i>
-            </span>
+                <img src="{{ asset('images/artist.png') }}" alt="Artesão" class="icon-img d-block">
+                <img src="{{ asset('images/artist-hover-selected.png') }}" alt="Artesão" class="icon-img d-none">
             <span>Artesãos</span>
         </a>
 
