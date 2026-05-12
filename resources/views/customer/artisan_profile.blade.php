@@ -30,19 +30,85 @@
         @endif
         </div>
         <div class="profile-info">
-            <h2 class="profile-name">{{ $artisan->name }}</h2>
+            <div class="profile-set-names">
+            <h1 class="profile-name">{{ $artisan->name }}</h1>
 
             @if($artisan->business_name)
-                <p class="profile-business">{{ $artisan->business_name }}</p>
+                <h2 class="profile-business">{{ $artisan->business_name }}</h2>
             @endif
+            </div>
 
-            @if($artisan->bio)
-                <p class="profile-bio">{{ $artisan->bio }}</p>
-            @endif
+            <div class="artisan-location">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>
+                    {{ $artisan->city }} - {{ $artisan->state }}
+                </span>
+            </div>
+
+            <div class="artisan-stats">
+            <p> <strong>{{ $followersCount }}</strong> seguidores</p>
+            <p>|</p>
+            <p> <strong>{{ $productsCount }}</strong> produtos</p>
+            </div>
+
+            <form action="{{ route('customer.artisan.follow', $artisan->slug) }}"
+            method="POST">
+               @csrf
+
+               @if($isFollowing)
+               <button class="following-btn"> Seguindo </button>
+               @else
+               <button class="follow-btn"> Seguir </button>
+               @endif
+            </form>
         </div>
     </div>
 
     <hr class="profile-divider">
+
+    @if($artisan->bio)
+    <div class="artisan-biography">
+        <h3>História do Artesão</h3>
+        <p>
+            {{ $artisan->bio }}
+        </p>
+    </div>
+    <hr class="profile-divider">
+    @endif
+
+    @if(!($categories->isEmpty()))
+    <div class="artisan-tags-section">
+        <h3>Categorias</h3>
+        <div class="artisan-tags">
+        @foreach($categories as $category)
+            <span class="tag">
+                {{ $category }}
+                @if(!$loop->last)
+                |
+                @endif
+            </span>
+        @endforeach
+        </div>
+    </div>
+    <hr class="profile-divider">
+    @endif
+
+    @if(!($techniques->isEmpty()))
+    <div class="artisan-tags-section">
+        <h3>Técnicas</h3>
+        <div class="artisan-tags">
+        @foreach($techniques as $technique)
+        <span class="tag">
+            {{ $technique }}
+            @if(!$loop->last)
+            |
+            @endif
+        </span>
+        @endforeach
+        </div>
+    </div>
+    <hr class="profile-divider">
+    @endif
 
     <h3 class="gallery-title">Produtos do Artesão</h3>
 

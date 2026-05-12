@@ -78,6 +78,10 @@ Route::prefix('cliente')->name('customer.')->middleware(['auth', 'customer'])->g
     ->name('artisans.index');
     Route::get('/artesao/{slug}', [ArtisanPublicController::class, 'show'])
     ->name('artisan.profile');
+    Route::post('/artesaos/{slug}/seguir', [CustomerArtisanController::class, 'toggleFollow'])
+    ->name('artisan.follow');
+    Route::get( '/seguindo', [CustomerArtisanController::class, 'followingArtisans'])
+    ->name('following.artisans');
     Route::get('/produto/{slug}', [CustomerProductController::class, 'showProduct'])
     ->name('product.data');
     Route::post('/produto/{slug}', [ProductReviewController::class, 'store'])

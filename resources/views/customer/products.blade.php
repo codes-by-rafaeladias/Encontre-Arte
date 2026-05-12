@@ -11,6 +11,9 @@
             name="search" 
             placeholder="Buscar produtos..."
             :value="$search"
+            :categories="$categories"
+            :techniques="$techniques"
+            :materials="$materials"
         />
         <x-search_filters_product/>
     </form>
@@ -23,7 +26,7 @@
 
     @if ($products->isEmpty())
     <div class="no-items">
-        <p>Nenhum produto encontrado para a pesquisa realizada.</p>
+        <p>Nenhum produto encontrado para: <strong>{{ $search }}</strong></p>
     </div>
     @endif
 

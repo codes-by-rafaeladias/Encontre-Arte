@@ -16,6 +16,7 @@
         placeholder="Buscar artesãos..."
         :value="$search"
     />
+    <x-search_filters_artisan/>
 </form>
 
 @if($artisans->isEmpty() && !$search)
@@ -30,7 +31,7 @@
     </div>
 @endif
 
-    <div class="artisan-list">
+    <div class="dashboard-grid">
         @foreach($artisans as $artisan)
             <x-card_artisan :artisan="$artisan"/>
         @endforeach

@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Technique;
+use App\Models\Material;
 use Illuminate\Support\Facades\Auth;
 
 class CustomerProductController extends Controller
 {
     public function listAllProducts(Request $request)
     {
+        $categories = Category::orderBy('name')->get();
+        $techniques = Technique::orderBy('name')->get();
+        $materials = Material::orderBy('name')->get();
+
         $search = $request->input('search');
         $searchType = $request->input('search_type', 'product');
 
@@ -65,7 +72,10 @@ class CustomerProductController extends Controller
         'products',
         'favoriteIds',
         'search',
-        'searchType'
+        'searchType',
+        'categories',
+        'techniques',
+        'materials',
     ));
 }
 

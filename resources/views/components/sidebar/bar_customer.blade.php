@@ -40,8 +40,8 @@
             <span>Avaliações</span>
         </a>
 
-        <a href="{{ route('customer.profile.data') }}"
-           class="menu-item {{ request()->routeIs('customer.profile.*') ? 'active' : '' }}">
+        <a href="{{ route('customer.following.artisans') }}"
+           class="menu-item {{ request()->routeIs('customer.following.artisans') ? 'active' : '' }}">
             <i class="fa-solid fa-users icon"></i>
             <span>Seguindo</span>
         </a>

@@ -5,37 +5,13 @@
         type="hidden"
         name="search_type"
         id="search_type"
-        value="{{ request('search_type', 'product') }}">
+        value="{{ request('search_type', 'artisan') }}">
     <button type="button" 
-    class="filter-chip {{ request('search_type', 'product') === 'product' ? 'active' : '' }}"
-    data-type="product">
-        <i class="fa-solid fa-bag-shopping"></i>
-        <p>Produto</p>
-    </button>
-    <button type="button" 
-    class="filter-chip {{ request('search_type') === 'artisan' ? 'active' : '' }}" 
+    class="filter-chip {{ request('search_type', 'artisan') === 'artisan' ? 'active' : '' }}" 
     data-type="artisan">
         <img src="{{ asset('images/artist-hover-selected.png') }}" alt="Artesão" class="icon-img d-block">
         <img src="{{ asset('images/artist.png') }}" alt="Artesão" class="icon-img d-none">
         <p>Artesão</p>
-    </button>
-    <button  type="button" 
-    class="filter-chip {{ request('search_type') === 'category' ? 'active' : '' }}"
-    data-type="category">
-        <i class="fa-solid fa-layer-group"></i>
-        <p>Categoria</p>
-    </button>
-    <button type="button" 
-    class="filter-chip {{ request('search_type') === 'technique' ? 'active' : '' }}"
-    data-type="technique">
-        <i class="fa-solid fa-paintbrush"></i>
-        <p>Técnica</p>
-    </button>
-    <button type="button" 
-    class="filter-chip {{ request('search_type') === 'material' ? 'active' : '' }}" 
-    data-type="material">
-        <i class="fa-solid fa-palette"></i>
-        <p>Material</p>
     </button>
     <button type="button" 
     class="filter-chip {{ request('search_type') === 'location' ? 'active' : '' }}"
