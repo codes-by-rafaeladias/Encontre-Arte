@@ -1,0 +1,77 @@
+.page-header{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.title{
+    margin-bottom: 1rem;
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.subtitle{
+    font-size: var(--font-size-md);
+    margin: 0;
+}
+
+
+.insights-container{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    margin: 2rem 20px 20px;
+}
+
+.insight-card{
+    background:#fff;
+    border-radius:16px;
+    padding:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+
+.insight-header{
+    margin-bottom:16px;
+}
+
+.insight-date{
+    font-size:14px;
+    color:#777;
+}
+
+.insight-content{
+    line-height:1.5;
+    white-space:normal;
+    font-size: var(--font-size-sm);
+    color:var(--color-text);
+}
+
+.ai-notice{
+    background:#fff8e8;
+    border:1px solid #f2d48f;
+    padding:20px;
+    border-radius:16px;
+    margin: 2rem 20px 0;
+}
+
+.ai-notice h3{
+    margin-top:0;
+    margin-bottom:12px;
+    font-size: var(--font-size-md);
+}
+
+.ai-notice ul{
+    padding-left:20px;
+    font-size: var(--font-size-sm);
+}
+
+.ai-notice p{
+    font-size: var(--font-size-sm);
+}
+
+.empty-state{
+    background:#fff;
+    border-radius:16px;
+    padding:48px 24px;
+    text-align:center;
+}

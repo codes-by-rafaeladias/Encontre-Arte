@@ -4,7 +4,7 @@
     @vite(['resources/css/app.css', 'resources/css/artisan/home.css'])
 @endpush
 
-@section('title', 'Início')
+@section('title', 'Início | Painel do Cliente')
 
 @section('content')
 

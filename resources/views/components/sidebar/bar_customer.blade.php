@@ -16,26 +16,29 @@
         </a>
 
         <a href="{{ route('customer.products.index') }}"
-           class="menu-item {{ request()->routeIs('customer.products.*') ? 'active' : '' }}">
+           class="menu-item {{ request()->routeIs('customer.products.index', 
+           'customer.product.data') ? 'active' : '' }}">
             <i class="fa-solid fa-bag-shopping icon"></i>
             <span>Produtos</span>
         </a>
 
         <a href="{{ route('customer.artisans.index') }}"
-           class="menu-item {{ request()->routeIs('customer.artisans.*') ? 'active' : '' }}">
+           class="menu-item {{ request()->routeIs('customer.artisans.index',
+           'customer.artisan.profile') ? 'active' : '' }}">
                 <img src="{{ asset('images/artist.png') }}" alt="Artesão" class="icon-img d-block">
                 <img src="{{ asset('images/artist-hover-selected.png') }}" alt="Artesão" class="icon-img d-none">
             <span>Artesãos</span>
         </a>
 
         <a href="{{ route('customer.favorites.index') }}"
-           class="menu-item {{ request()->routeIs('customer.favorites.*') ? 'active' : '' }}">
+           class="menu-item {{ request()->routeIs('customer.favorites.index') ? 'active' : '' }}">
             <i class="fa-solid fa-heart icon"></i>
             <span>Favoritos</span>
         </a>
 
         <a href="{{ route('customer.reviews.index') }}"
-           class="menu-item {{ request()->routeIs('customer.reviews.*') ? 'active' : '' }}">
+           class="menu-item {{ request()->routeIs('customer.reviews.index',
+           'customer.review.destroy') ? 'active' : '' }}">
             <i class="fa-solid fa-star icon"></i>
             <span>Avaliações</span>
         </a>
@@ -63,4 +66,3 @@
 
     </nav>
 </aside>
-

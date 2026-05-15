@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('business_name', 255)->nullable();
             $table->enum('type', ['customer', 'artisan']);
+            $table->boolean('ai_consent')->default(false);
             $table->text('bio')->nullable();
             $table->string('profile_image', 255)->nullable();
             $table->string('country')->default('Brasil');

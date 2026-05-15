@@ -14,6 +14,8 @@ use App\Http\Controllers\ArtisanReviewController;
 use App\Http\Controllers\CustomerProfileController;
 use App\Http\Controllers\ArtisanHomeController;
 use App\Http\Controllers\CustomerHomeController;
+use App\Http\Controllers\ArtisanSuggestionController;
+use App\Http\Controller\ArtisanConsentController;
 
 //rota inicial do sistema
 Route::get('/', [AuthController::class, 'showLogin'])->name('login');
@@ -59,6 +61,8 @@ Route::prefix('artesao')->name('artisan.')->middleware(['auth', 'artisan'])->gro
     Route::delete('/produtos/{id}', [ArtisanProductController::class, 'destroy'])->name('products.destroy');
     Route::get('/avaliacoes', [ArtisanReviewController::class, 'listReviews']
     )->name('reviews.index');
+    Route::get('/sugestoes-inteligentes', [ArtisanSuggestionController::class, 'index']
+    )->name('smart-suggestions.index');
 });
 
 //rotas para clientes

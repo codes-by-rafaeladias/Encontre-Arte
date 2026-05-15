@@ -98,6 +98,12 @@
             </label>
             <textarea placeholder="Compartilhe como começou, suas inspirações e o que torna seu trabalho único..." name="bio" id="bio">{{ old('bio', '') }}</textarea>
         </div>
+        <div class="ai-consent-container">
+            <label class="ai-checkbox-label">
+            <input type="checkbox" name="ai_consent" value="1">
+             Permitir sugestões inteligentes com IA.
+            </label>
+        </div>
             <button type="submit" class="btn btn-primary btn-largo">
                 Finalizar Cadastro
             </button>

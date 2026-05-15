@@ -42,7 +42,7 @@ class Product extends Model
 
     public function favoritedBy()
     {
-        return $this->belongsToMany(User::class, 'favorites');
+        return $this->belongsToMany(User::class, 'favorites', 'product_id', 'customer_id');
     }
     
     public function reviews()

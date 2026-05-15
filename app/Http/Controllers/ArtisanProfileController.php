@@ -27,7 +27,11 @@ class ArtisanProfileController extends Controller
             'state'          => 'required|string',
             'city'           => 'required|string',
             'whatsapp'       => 'nullable|regex:/^(\+55)?\d{10,11}$/|unique:users,whatsapp',
-            'instagram'      => 'nullable|regex:/^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._]+\/?$|^@?[A-Za-z0-9._]+$/|unique:users,instagram',
+            'instagram' => [
+            'nullable',
+            'regex:/^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._]+\/?$|^@?[A-Za-z0-9._]+$/',
+            'unique:users,instagram'
+            ],
         ],
         [
             'state.required' => 'O campo estado é obrigatório.',
@@ -42,6 +46,7 @@ class ArtisanProfileController extends Controller
         $user->bio = $request->bio;
         $user->state = $request->state;
         $user->city = $request->city;
+        $user->ai_consent = $request->has('ai_consent');
 
         if ($request->filled('whatsapp')) {
             $number = preg_replace('/\D/', '', $request->whatsapp);
@@ -55,7 +60,7 @@ class ArtisanProfileController extends Controller
 
         if ($request->filled('instagram')) {
             $user->instagram = str_replace(['https://instagram.com/', 'https://www.instagram.com/', 'www.instagram.com/'], '', $request->instagram);
-            $user->instagram = ltrim($instagram, '@');
+            $user->instagram = ltrim($user->instagram, '@');
         }
 
         if ($request->hasFile('profile_image')) {
@@ -87,13 +92,17 @@ class ArtisanProfileController extends Controller
             'state'          => 'required|string',
             'city'           => 'required|string',
             'whatsapp' => ['nullable', 'regex:/^(\+55)?\d{10,11}$/', Rule::unique('users', 'whatsapp')->ignore($user->id),],
-            'instagram' => ['nullable','regex:/^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._]+\/?$|^@?[A-Za-z0-9._]+$/', Rule::unique('users', 'instagram')->ignore($user->id),],
+            'instagram' => [
+            'nullable',
+            'regex:/^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._]+\/?$|^@?[A-Za-z0-9._]+$/',
+            Rule::unique('users', 'instagram')->ignore($user->id),
+            ],
         ],
         [
             'name.required' => 'O campo nome é obrigatório.',
             'state.required' => 'O campo estado é obrigatório.',
             'city.required' => 'O campo cidade é obrigatório.',
-            'whatsapp.regex' => 'Digite um WhatsApp válido.',
+            'whatsapp.regex' => 'Digite um WhatsApp válido. Somente números são aceitos no campo.',
             'instagram.regex' => 'Digite um usuário válido do Instagram.',
             'whatsapp.unique' => 'Digite um WhatsApp válido.',
             'instagram.unique' => 'Digite um usuário válido do Instagram.',
@@ -104,6 +113,7 @@ class ArtisanProfileController extends Controller
         $user->bio = $request->bio;
         $user->state = $request->state;
         $user->city = $request->city;
+        $user->ai_consent = $request->has('ai_consent');
 
         if ($request->filled('whatsapp')) {
             $number = preg_replace('/\D/', '', $request->whatsapp);
@@ -145,7 +155,7 @@ class ArtisanProfileController extends Controller
 
         $user->save();
         
-        return redirect()->route('artisan.home');
+        return redirect()->route('artisan.home')->with('success', 'Perfil atualizado com sucesso!');
 
     }
 

@@ -16,13 +16,16 @@
         </a>
 
         <a href="{{ route('artisan.products.index') }}"
-           class="menu-item {{ request()->routeIs('artisan.products.*') ? 'active' : '' }}">
+           class="menu-item {{ request()->routeIs('artisan.products.index', 
+           'artisan.products.update.index', 'artisan.products.update.update',
+           'artisan.products.destroy') ? 'active' : '' }}">
             <i class="fa-solid fa-bag-shopping icon"></i>
             <span>Produtos</span>
         </a>
 
         <a href="{{ route('artisan.products.create') }}"
-           class="menu-item {{ request()->routeIs('artisan.products.create') ? 'active' : '' }}">
+           class="menu-item {{ request()->routeIs('artisan.products.create', 
+           'artisan.products.store') ? 'active' : '' }}">
             <span class="icon">
                 <i class="fa-solid fa-plus"></i>
             </span>
@@ -35,14 +38,15 @@
             <span>Avaliações dos Clientes</span>
         </a>
 
-        <a href="{{ route('artisan.profile.data') }}"
-           class="menu-item {{ request()->routeIs('artisan.profile.*') ? 'active' : '' }}">
+        <a href="{{ route('artisan.smart-suggestions.index') }}"
+           class="menu-item {{ request()->routeIs('artisan.smart-suggestions.index') ? 'active' : '' }}">
             <i class="fa-solid fa-lightbulb icon"></i>
             <span>Sugestões Inteligentes</span>
         </a>
 
         <a href="{{ route('artisan.profile.data') }}"
-           class="menu-item {{ request()->routeIs('artisan.profile.*') ? 'active' : '' }}">
+           class="menu-item {{ request()->routeIs('artisan.profile.data', 
+           'artisan.profile.update') ? 'active' : '' }}">
             <i class="fa-solid fa-user icon"></i>
             <span>Perfil</span>
         </a>

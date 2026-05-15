@@ -4,7 +4,7 @@
     @vite(['resources/css/app.css', 'resources/css/artisan/home.css'])
 @endpush
 
-@section('title', 'Início')
+@section('title', 'Início | Painel do Artesão')
 
 @section('content')
 
@@ -100,7 +100,7 @@
         </div>
 
         <a
-            href="#"
+            href="{{ route('artisan.smart-suggestions.index') }}"
             class="btn btn-primary btn-medio"
         >
             Ver sugestões
