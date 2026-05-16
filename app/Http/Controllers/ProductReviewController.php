@@ -8,6 +8,19 @@ use Illuminate\Http\Request;
 
 class ProductReviewController extends Controller
 {
+    
+    public function listReviews($productSlug){
+        $user = auth()->user();
+        $product = Product::where('slug', $productSlug)->firstOrFail();
+
+        $reviews = $product->reviews()
+        ->with('user')
+        ->latest()
+        ->paginate(10);
+
+        return view('customer.product_reviews', compact('reviews', 'product'));
+    }
+
     public function store(Request $request, $productId)
     {
         $request->validate([

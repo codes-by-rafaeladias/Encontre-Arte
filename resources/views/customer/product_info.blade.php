@@ -57,7 +57,7 @@
                 @endfor
 
                 @if($half)
-                    <i class="fa-regular fa-star-half-stroke rating-star"></i>
+                    <i class="fa-solid fa-star-half-stroke rating-star"></i>
                 @endif
 
                 @for($i = 0; $i < $empty; $i++)
@@ -65,6 +65,8 @@
                 @endfor
 
                 <span class="rating-number">({{ number_format($average, 1, ',', '.') }})</span>
+
+                <a href="{{ route('customer.product.reviews', $product->slug) }}">Ver avaliações</a>
             </div>
 
             <div class="product-buttons">

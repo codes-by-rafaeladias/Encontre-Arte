@@ -92,6 +92,8 @@ Route::prefix('cliente')->name('customer.')->middleware(['auth', 'customer'])->g
     ->name('review.create');
     Route::put('/produto/{slug}', [ProductReviewController::class, 'update'])
         ->name('review.update');
+    Route::get('/produto/{slug}/avaliacoes', [ProductReviewController::class, 'listReviews'])
+        ->name('product.reviews');
     Route::get('/avaliacoes', [CustomerReviewController::class, 'showReviews'])
         ->name('reviews.index');
     Route::delete('/avaliacao/{id}/excluir', [CustomerReviewController::class, 'destroy'])

@@ -108,12 +108,15 @@
     position: absolute;
     top: 110%;
     left: 0;
-    background: var(--color-text-on-primary);
+    background: #fff8e8;
+    border:1px solid #f2d48f;
     border-radius: 10px;
     box-shadow: 0 6px 16px rgba(0,0,0,0.15);
     padding: 8px;
-    width: 150px;
-
+    gap: 12px;
+    width: 140px;
+    display: flex;
+    flex-direction: column;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-5px);
