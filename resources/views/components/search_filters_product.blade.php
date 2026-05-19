@@ -15,8 +15,7 @@
     <button type="button" 
     class="filter-chip {{ request('search_type') === 'artisan' ? 'active' : '' }}" 
     data-type="artisan">
-        <img src="{{ asset('images/artist-hover-selected.png') }}" alt="Artesão" class="icon-img d-block">
-        <img src="{{ asset('images/artist.png') }}" alt="Artesão" class="icon-img d-none">
+        <i class="fa-solid fa-palette"></i>
         <p>Artesão</p>
     </button>
     <button  type="button" 
@@ -34,7 +33,7 @@
     <button type="button" 
     class="filter-chip {{ request('search_type') === 'material' ? 'active' : '' }}" 
     data-type="material">
-        <i class="fa-solid fa-palette"></i>
+        <i class="fa-solid fa-cubes"></i>
         <p>Material</p>
     </button>
     <button type="button" 

@@ -66,7 +66,9 @@
 
                 <span class="rating-number">({{ number_format($average, 1, ',', '.') }})</span>
 
+                @if($product->reviews()->exists())
                 <a href="{{ route('customer.product.reviews', $product->slug) }}">Ver avaliações</a>
+                @endif
             </div>
 
             <div class="product-buttons">

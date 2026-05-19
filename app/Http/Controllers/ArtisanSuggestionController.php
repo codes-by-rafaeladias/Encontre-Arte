@@ -15,6 +15,7 @@ class ArtisanSuggestionController extends Controller
             auth()->id()
         )
         ->latest()
+        ->take(1)
         ->get();
 
         return view(

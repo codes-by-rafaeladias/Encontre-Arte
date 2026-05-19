@@ -15,7 +15,6 @@ use App\Http\Controllers\CustomerProfileController;
 use App\Http\Controllers\ArtisanHomeController;
 use App\Http\Controllers\CustomerHomeController;
 use App\Http\Controllers\ArtisanSuggestionController;
-use App\Http\Controller\ArtisanConsentController;
 
 //rota inicial do sistema
 Route::get('/', [AuthController::class, 'showLogin'])->name('login');
