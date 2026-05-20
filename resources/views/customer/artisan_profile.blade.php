@@ -51,6 +51,21 @@
             <p> <strong>{{ $productsCount }}</strong> produtos</p>
             </div>
 
+            @if($artisan->whatsapp || $artisan->instagram)
+            <div class="artisan-contact">
+                @if($artisan->whatsapp)
+                <a href="https://wa.me/{{ preg_replace('/\D/', '', $artisan->whatsapp) }}" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                @endif
+                @if($artisan->instagram)
+                <a href="https://instagram.com/{{ $artisan->instagram }}" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                @endif
+            </div>
+            @endif
+
             <form action="{{ route('customer.artisan.follow', $artisan->slug) }}"
             method="POST">
                @csrf
