@@ -2,17 +2,37 @@
 
 ## Sumário
 
+- [Autoria](#autoria)
+- [Sobre este Repositório](#sobre-este-repositório)
 - [Introdução](#introdução)
-- [Público-Alvo](#público-alvo)
 - [Sobre o Sistema](#sobre-o-sistema)
 - [Funcionalidades](#funcionalidades)
 - [Telas do Sistema](#telas-do-sistema)
 - [Inteligência Artificial Generativa](#inteligência-artificial-generativa)
+- [Inspeção do Protótipo](#inspeção-do-protótipo)
 - [Demonstração do Sistema](#demonstração-do-sistema)
 - [Execução do Projeto](#execução-do-projeto)
+- [Estado do Projeto](#estado-do-projeto)
 - [Créditos de Imagens](#créditos-de-imagens)
-- [Autora](#autora)
-- [Orientação](#orientação)
+
+---
+
+## Autoria
+
+**Rafaela Dias dos Santos**  
+Bacharelado em Sistemas de Informação
+
+Orientador: **Prof. Dr. Crescêncio Rodrigues Lima Neto**
+
+---
+
+## Sobre este repositório
+
+Este repositório contém a implementação do protótipo funcional Encontre Arte, desenvolvido como Trabalho de Conclusão de Curso (TCC) do curso de Bacharelado em Sistemas de Informação.
+
+Versão do sistema utilizada no artigo: commit **3c69062**.
+
+O trabalho também utiliza uma inspeção baseada em cenários simulados. Os artefatos utilizados durante a inspeção podem ser encontrados na pasta docs/simulacao
 
 ---
 
@@ -22,15 +42,13 @@ Este repositório contém o código-fonte do sistema **Encontre Arte**, desenvol
 
 O sistema consiste em um marketplace voltado para artesãos que desejam divulgar seu trabalho e para consumidores que apreciam o artesanato.
 
-O principal objetivo do projeto é fortalecer a conexão entre artesãos e consumidores por meio de uma plataforma digital acessível e intuitiva. Diante disso, destacam-se os seguintes objetivos específicos:
+O principal objetivo do projeto é desenvolver uma plataforma digital que fortaleça a conexão entre artesãos e clientes em um contexto de Economia Criativa. Diante disso, destacam-se os seguintes objetivos específicos:
 
 1. Destacar a produção artesanal através da apresentação detalhada dos artesãos e de seus produtos;
 2. Facilitar a descoberta de artesãos e produtos;
-3. Utilizar a Inteligência Artificial para análise de dados e geração de sugestões personalizadas para artesãos.
+3. Aplicar técnicas de Inteligência Artificial (IA) para análise de dados e geração de sugestões personalizadas aos artesãos.
 
----
-
-## Público-Alvo
+### Público-Alvo
 
 O projeto é destinado a artesãos independentes inseridos na Economia Criativa, setor que engloba as atividades econômicas relacionadas à criatividade, ao capital intelectual e à inovação.
 Além dos artesãos, também é direcionado para indivíduos que valorizam itens culturais, autorais e criativos.
@@ -70,8 +88,8 @@ principais, separando a lógica de negócio da lógica de apresentação.
 O usuário cliente pode acessar serviços como:
 
 - Cadastro e autenticação de usuário;
-- Pesquisa de produtos com filtros como nome do produto, artesão vendedor, categoria, técnica artesanal, matéria-prima e localização;
-- Pesquisa de artesãos com filtros como nome e localização;
+- Pesquisa de produtos por meio de critérios de busca como nome do produto, artesão vendedor, categoria, técnica artesanal, matéria-prima e localização;
+- Pesquisa de artesãos com critérios de busca como nome e localização;
 - Avaliação de produtos;
 - Gerenciamento de artesãos seguidos;
 - Gerenciamento de produtos favoritos.
@@ -94,13 +112,13 @@ O usuário artesão pode explorar os seguintes recursos:
 
 #### Painel Inicial do Artesão com Métricas
 
-![Painel Inicial](docs/images/painel.png)
+![Painel Inicial](docs/images/inicial.png)
 
 #### Sugestões Inteligentes
 
 ![Sugestões Inteligentes - parte superior](docs/images/sugestoes-1.png)
 
-![Sugestões Inteligentes - parte inferior](docs/images/sugestoes-2.png)
+![Sugestões Inteligentes - parte inferior](docs/images/sugestoes-inteligentes.png)
 
 ### Cliente
 
@@ -118,15 +136,15 @@ O usuário artesão pode explorar os seguintes recursos:
 
 #### Detalhes do Artesão
 
-![Detalhes do Artesão - parte superior](docs/images/artesao-1.png)
-
-![Detalhes do Artesão - parte inferior](docs/images/artesao-2.png)
+![Detalhes do Artesão](docs/images/artesao.png)
 
 ---
 
 ## Inteligência Artificial Generativa
 
 A Inteligência Artificial Generativa é utilizada para analisar dados periódicos sobre o desempenho do artesão na plataforma e para gerar um texto com observações e sugestões de melhoria sobre o trabalho que o artesão desenvolve ao divulgar e manter seu trabalho no marketplace.
+
+Utilizou-se o modelo **Llama 3.3 70B Versatile** disponibilizado por meio da API Groq para geração do conteúdo textual. Durante o desenvolvimento e os testes iniciais do protótipo, foi utilizado o plano gratuito disponibilizado pela plataforma. No entanto, em um cenário de produção com maior quantidade de usuários e volume de requisições, a utilização da API poderá demandar investimentos financeiros para garantir a continuidade e a escalabilidade do serviço.
 
 ### Dados
 
@@ -137,34 +155,77 @@ A Inteligência Artificial Generativa é utilizada para analisar dados periódic
 ### Prompt 
 
 Um prompt é um conjunto de instruções enviado ao modelo de IA.
-As instruções enviadas pelo sistema são:
+O prompt utilizado para geração das sugestões inteligentes encontra-se disponível em: 
 
-```text
-Você é um assistente inteligente para artesãos em um contexto de Economia Criativa.
-Considere os dados e os arquivos CSV abaixo.
+`docs/simulacao/prompts/ia-generativa.md`
 
-CSV DO ARTESÃO
-CSV DE PRODUTOS
-CSV DE AVALIAÇÕES
+### Exemplo de Saída
 
-Com base nessas informações, realize uma análise geral do desempenho do artesão na plataforma digital e gere: 
+Como resposta, é produzido um texto que destaca pontos positivos e pontos negativos observados, além de sugerir melhorias e identificar padrões observados nas avaliações e interações registradas na plataforma.
 
-1. Pontos positivos observados;
-2. Pontos negativos observados;
-3. Sugestões de melhoria;
-4. Tendências identificadas.
-        
-A estrutura do texto deve seguir a ordem acima de tópicos.
-Utilize uma linguagem coloquial, motivacional e acolhedora, evitando excesso de termos técnicos.
-As sugestões devem ser objetivas, simples e voltadas ao crescimento do artesão dentro da plataforma.
-Evite repetir informações e priorize observações realmente relevantes.
-Evite inventar informações que não estejam presentes nos dados enviados.
-A resposta deve possuir no máximo 250 palavras.
-```
+![Sugestões Inteligentes - parte inferior](docs/images/sugestoes-inteligentes.png)
 
 ### Limitações
 
-As respostas geradas pela Inteligência Artificial podem variar conforme os dados disponíveis na plataforma, não substituindo a capacidade humana de análise e interpretação.
+- As respostas geradas pela Inteligência Artificial podem variar conforme os dados disponíveis na plataforma, não substituindo a capacidade humana de análise e interpretação;
+- As sugestões possuem caráter auxiliar e devem ser interpretadas de forma crítica pelo artesão, uma vez que modelos de linguagem podem produzir respostas imprecisas ou enviesadas. Dessa forma, cabe ao artesão avaliar a pertinência das recomendações apresentadas e decidir sobre sua eventual adoção.
+
+### Privacidade
+
+Para geração das Sugestões Inteligentes, são enviados à API Groq dados relacionados ao perfil do artesão, aos produtos cadastrados e às avaliações recebidas pelos produtos.
+Os dados enviados são utilizados exclusivamente para geração das Sugestões Inteligentes, respeitando o escopo definido pelo sistema.
+Informações sensíveis, como credenciais de acesso, não são compartilhadas com o modelo de Inteligência Artificial.
+
+---
+
+## Inspeção do Protótipo
+
+Com o propósito de realizar uma inspeção do protótipo desenvolvido, cenários de uso foram simulados utilizando perfis representativos (personas) do público-alvo da plataforma. Os cenários de uso e as personas foram elaborados com o apoio do modelo de Inteligência Artificial Gemini.
+
+### Procedimentos
+
+1. Geração de seis personas fictícias utilizando o Gemini;
+2. Criação de cenários de uso baseados nas funcionalidades do sistema com o apoio do Gemini;
+3. Realização dos testes exploratórios;
+4. Análise das observações.
+
+### Prompt
+
+O prompt utilizado para geração dos cenários de testes encontra-se disponível em:
+
+`docs/simulacao/prompts/personas-cenarios-gemini.md`
+
+### Saída do Gemini
+
+A resposta detalhada e completa pode ser acessada em: 
+
+`docs/simulacao/saida/saida-gemini.md`
+
+#### Personas: 
+1. Artesãos
+- Tereza Maria dos Santos: Rendeira de bilro e líder de associação comunitária, 64 anos;
+- Lucas Schimidt: Designer industrial focado em mobiliário sustentável com madeira de demolição, 28 anos;
+- Clara Mendes: Assistente administrativa que produz cerâmica utilitária, 41 anos.
+
+2. Clientes
+- Mariana Albuquerque: Arquiteta e urbanista, 31 anos;
+- Alberto Goldstein: Professor universitário de História aposentado, 55 anos;
+- Camila Ribeiro: Estudante de Biologia, 22 anos.
+
+#### Cenários de uso:
+1. Artesãos
+- Cenário 1: Dona Tereza cadastrando sua primeira renda de bilro;
+- Cenário 2: Lucas analisando o desempenho e usando as sugestões inteligentes;
+- Cenário 3: Clara gerenciando avaliações e atualizando produtos.
+
+2. Clientes
+- Cenário 4: Mariana buscando fornecedores locais para seu casamento;
+- Cenário 5: Seu Alberto descobrindo um novo mestre da escultura em argila;
+- Cenário 6: Camila buscando um acessório eco-friendly baseado em reputação.
+
+### Análise dos Resultados
+
+A inspeção realizada permitiu observar aspectos positivos e limitações do protótipo. Entre os aspectos positivos, destacam-se as funcionalidades disponíveis para a exploração de artesãos e produtos artesanais. Em contrapartida, foram identificadas limitações relacionadas à indisponibilidade da combinação simultânea de múltiplos filtros de pesquisa, à ausência de um painel com métricas de desempenho dos produtos e à impossibilidade de os artesãos responderem às dúvidas e comentários realizados pelos clientes nas avaliações dos produtos.
 
 ---
 
@@ -181,12 +242,11 @@ As respostas geradas pela Inteligência Artificial podem variar conforme os dado
 
 Antes de iniciar, certifique-se de ter instalado:
 
-- **XAMPP** (com Apache e MySQL ativos)  
-- **Composer** (gerenciador de dependências do PHP)  
-- **Node.js** (ambiente de execução Javascript)
-- **NPM** (gerenciador de pacotes do Node.js)
-- **Git** (para clonar o repositório)
-- **API Key/Chave API** (para integração com IA para geração de sugestões inteligentes)
+- **XAMPP** (com Apache e MySQL ativos): https://www.apachefriends.org/pt_br/download.html;  
+- **Composer** (gerenciador de dependências do PHP): https://getcomposer.org/download/;
+- **Node.js** (ambiente de execução Javascript e gerenciador de pacotes npm): https://nodejs.org/pt-br/download;
+- **Git** (para clonar o repositório): https://git-scm.com/install/;
+- **API Key/Chave API** (para integração com IA para geração de sugestões inteligentes): https://console.groq.com/keys.
 
 ---
 
@@ -288,16 +348,11 @@ php artisan app:generate-ai-insights
 
 Recursos gráficos utilizados no projeto:
 
-- Freepik — https://www.freepik.com/
+- Pexels — https://www.pexels.com/
 
 ---
 
-## Autora
+## Estado do Projeto
 
-Rafaela Dias dos Santos
-
----
-
-## Orientação
-
-Professor Crescêncio Rodrigues Lima Neto
+Este projeto consiste em um protótipo funcional desenvolvido para fins acadêmicos como Trabalho de Conclusão de Curso.
+Algumas funcionalidades frequentemente presentes em marketplaces, como pagamento, carrinho de compras e comunicação direta entre artesãos e clientes, não foram implementadas neste protótipo e podem ser exploradas em trabalhos futuros.
