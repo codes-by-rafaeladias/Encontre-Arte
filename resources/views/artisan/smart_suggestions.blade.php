@@ -56,7 +56,7 @@
     </ul>
 
     <p>
-        Os dados são utilizados apenas internamente para geração de recomendações ao próprio artesão. Nenhuma informação será compartilhada.
+        Essas informações são utilizadas exclusivamente para gerar recomendações personalizadas para o próprio artesão. O processamento é realizado por meio do serviço de IA utilizado pela plataforma, e os dados não são compartilhados com outros usuários. Você pode revogar a autorização para utilização da IA a qualquer momento.
     </p>
 
 </div>

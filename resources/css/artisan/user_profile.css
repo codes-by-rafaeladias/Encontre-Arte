@@ -85,6 +85,12 @@ textarea::placeholder,
     color: #999 !important;
 }
 
+.ai-consent-container{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .ai-checkbox-label{
     display:flex;
     align-items:center;
@@ -97,4 +103,42 @@ textarea::placeholder,
 .ai-checkbox-label input{
     width:16px;
     height:16px;
+}
+
+.ai-consent-dropdown{
+    position: relative;
+    display: inline-block;
+    align-items: center;
+}
+
+.btn-icon{
+    font-size: 1rem;
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+.dropdown-text{
+    position: absolute;
+    left: calc(100% + 8px);
+    top: 50%;
+    background: var(--color-text-on-primary);
+    border:var(--color-text);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.15);
+    padding: 12px;
+    width: 150px;
+    display: none;
+    z-index: 100;
+    transform: translateY(-50%);
+}
+
+.ai-consent-dropdown:hover .dropdown-text{
+    display: block;
+}
+
+.ai-advice {
+    margin: 0;
+    font-size: var(--font-size-xs);
+    line-height: 1.6;
+    color: var(--color-text);
 }

@@ -123,6 +123,12 @@
                 {{ old('ai_consent', $user->ai_consent) ? 'checked' : '' }}>
                 Permitir sugestões inteligentes com IA.
                 </label>
+                <div class="ai-consent-dropdown">
+                    <i class="fa-solid fa-circle-question btn-icon"></i>
+                <div class="dropdown-text">
+                    <span class="ai-advice">Ao habilitar esta opção, informações relacionadas aos seus produtos e indicadores da plataforma poderão ser processadas pela IA para gerar recomendações personalizadas. A autorização pode ser revogada a qualquer momento.</span>
+                </div>
+            </div>
             </div>
             <button type="submit" class="btn btn-primary btn-largo">
                 Salvar Alterações
