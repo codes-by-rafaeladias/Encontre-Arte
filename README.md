@@ -30,7 +30,7 @@ Orientador: **Prof. Dr. Crescêncio Rodrigues Lima Neto**
 
 Este repositório contém a implementação do protótipo funcional Encontre Arte, desenvolvido como Trabalho de Conclusão de Curso (TCC) do curso de Bacharelado em Sistemas de Informação.
 
-Versão do sistema utilizada no artigo: commit **3c69062**.
+Versão do sistema utilizada no artigo: commit **7cee3ba**.
 
 O trabalho também utiliza uma inspeção baseada em cenários simulados. Os artefatos utilizados durante a inspeção podem ser encontrados na pasta docs/simulacao
 
