@@ -13,7 +13,6 @@ Considere os dados e os arquivos CSV abaixo.
 
 CSV DO ARTESÃO
 CSV DE PRODUTOS
-CSV DE AVALIAÇÕES
 
 Com base nessas informações, realize uma análise geral do desempenho do artesão na plataforma digital e gere: 
 

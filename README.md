@@ -148,9 +148,8 @@ Utilizou-se o modelo **Llama 3.3 70B Versatile** disponibilizado por meio da API
 
 ### Dados
 
-- Perfil do Artesão: Quantidade de seguidores, número de produtos cadastrados, descrição da história/biografia;
-- Produtos: Quantidade de avaliações recebidas, número de favoritos, nome, descrição, categorias, técnicas, materiais;
-- Avaliações dos Produtos: produto avaliado, nota e comentário atribuídos pelo cliente.
+- Perfil do Artesão: quantidade de seguidores, número de produtos cadastrados e descrição da história/biografia;
+- Produtos: nome, descrição, categoria, técnica, materiais, quantidade de favoritos, quantidade de avaliações e média das avaliações.
 
 ### Prompt 
 
@@ -161,7 +160,7 @@ O prompt utilizado para geração das sugestões inteligentes encontra-se dispon
 
 ### Exemplo de Saída
 
-Como resposta, é produzido um texto que destaca pontos positivos e pontos negativos observados, além de sugerir melhorias e identificar padrões observados nas avaliações e interações registradas na plataforma.
+Como resposta, é produzido um texto que destaca pontos positivos e pontos negativos observados, além de sugerir melhorias e identificar padrões observados nas interações registradas na plataforma.
 
 ![Sugestões Inteligentes - parte inferior](docs/images/sugestoes-inteligentes.png)
 
@@ -172,9 +171,8 @@ Como resposta, é produzido um texto que destaca pontos positivos e pontos negat
 
 ### Privacidade
 
-Para geração das Sugestões Inteligentes, são enviados à API Groq dados relacionados ao perfil do artesão, aos produtos cadastrados e às avaliações recebidas pelos produtos.
-Os dados enviados são utilizados exclusivamente para geração das Sugestões Inteligentes, respeitando o escopo definido pelo sistema.
-Informações sensíveis, como credenciais de acesso, não são compartilhadas com o modelo de Inteligência Artificial.
+Para geração das Sugestões Inteligentes, são enviados à API Groq dados relacionados ao perfil do artesão, aos produtos cadastrados e às avaliações (média das notas) recebidas pelos produtos.
+Os dados são enviados ao serviço de Inteligência Artificial utilizado pela plataforma exclusivamente com a finalidade de gerar recomendações personalizadas para o próprio artesão. Informações sensíveis, como credenciais de acesso, não são compartilhadas com o modelo de Inteligência Artificial.
 
 ---
 

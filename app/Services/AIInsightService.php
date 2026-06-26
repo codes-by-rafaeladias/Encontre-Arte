@@ -16,17 +16,8 @@ class AIInsightService
                 'category',
                 'technique',
                 'materials',
-                'reviews'
             ])
             ->get();
-        
-        $products->each(function ($product) {
-
-            $product->setRelation(
-                'reviews',
-                $product->reviews->take(20)
-            );
-        });
         
         /* CSV COM DADOS DO ARTESÃOS */
         
@@ -47,7 +38,7 @@ class AIInsightService
         /* CSV COM DADOS DOS PRODUTOS DO ARTESÃO */
 
         $productsCsv =
-            "nome,descricao,categoria,tecnica,material,favoritos,avaliacoes\n";
+            "nome,descricao,categoria,tecnica,material,favoritos,avaliacoes, media_avaliacao\n";
 
         foreach ($products as $product) {
 
@@ -65,33 +56,14 @@ class AIInsightService
 
                 $product->favoritedBy()->count() . ',' .
 
-                $product->reviews->count()
+                $product->reviews->count() . ',' .
+
+                $product->averageRating()
 
                 . "\n";
         }
 
-        /* CSV DE AVALIAÇÕES DOS PRODUTOS */
-
-        $reviewsCsv =
-            "produto,nota,comentario\n";
-
-        foreach ($products as $product) {
-
-            foreach ($product->reviews as $review) {
-
-                $reviewsCsv .=
-
-                    '"' . $product->name . '",' .
-
-                    $review->rating . ',' .
-
-                    '"' . str_replace('"', '', $review->comment) . '"'
-
-                    . "\n";
-            }
-        }
-
-        /* PROMP */ 
+        /* PROMPT */ 
         $prompt = "
         Você é um assistente inteligente para artesãos em um contexto de Economia Criativa.
         Considere os dados e os arquivos CSV abaixo.
@@ -101,9 +73,6 @@ class AIInsightService
  
         CSV DE PRODUTOS
         {$productsCsv}
-        
-        CSV DE AVALIAÇÕES
-        {$reviewsCsv}
         
         Com base nessas informações, realize uma análise geral do desempenho do artesão na plataforma digital e gere: 
 

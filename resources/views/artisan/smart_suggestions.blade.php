@@ -45,18 +45,20 @@
 
         <li>Descrição/história do artesão;</li>
 
+        <li>Quantidade de seguidores;</li>
+
         <li>Produtos cadastrados;</li>
 
         <li>Categorias, técnicas e materiais;</li>
 
         <li>Favoritos recebidos;</li>
 
-        <li>Avaliações, notas e comentários.</li>
+        <li>Quantidade de avaliações recebidas e média das notas atribuídas aos produtos.</li>
 
     </ul>
 
     <p>
-        Essas informações são utilizadas exclusivamente para gerar recomendações personalizadas para o próprio artesão. O processamento é realizado por meio do serviço de IA utilizado pela plataforma, e os dados não são compartilhados com outros usuários. Você pode revogar a autorização para utilização da IA a qualquer momento.
+        Essas informações são enviadas ao serviço de Inteligência Artificial utilizado pela plataforma com a finalidade de gerar recomendações personalizadas para o próprio artesão. Os dados não são compartilhados com outros usuários, e a autorização para utilização da funcionalidade pode ser revogada a qualquer momento.
     </p>
 
 </div>
